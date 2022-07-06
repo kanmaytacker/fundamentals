@@ -203,6 +203,7 @@ A database management systems aims to provide a single interface to a set of dat
     * > to store and retrieve data records that are part of a “time series,” which is a set of data points that are associated with timestamps. The timestamps provide a critical context for each of the data points in how they are related to others.
     * InfluxDB, TimeScaleDB, Prometheus, etc.
 
+--- 
 ### Relational DBMS
 
 Using a database in an application leads to extra or boilerplate code. You might see the same piece of code across applications. To reduce this duplication and standardise the code, various data models were proposed.
@@ -261,6 +262,7 @@ Main features of the relational model are:
 * **Uniform data type** - Every value in a column is of the same data type
 * **Atomicity** -  Each attribute in each tuple within a relation should consist of a single value and not allow multivalued structures of the kind
 
+--- 
 ### Keys
 Keys are used to 
 * uniquely identify a tuple in a relation.
