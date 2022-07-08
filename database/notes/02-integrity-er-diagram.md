@@ -35,8 +35,11 @@ Following is a schema diagram for the above database. Note that the primary key 
 
 ![Schema](../media/schema.png)
 
-!!! Note Try it yourself
-    Go to [this](https://diagramplus.com/) website and import [this](../media/schema.diagram) diagram. Try adding a new column or even a new table.
+> **Note**
+>
+> Try it yourself. \
+> Go to [this](https://diagramplus.com/) website and import [this](../media/schema.diagram) diagram. \
+> Try adding a new column or even a new table.
 
 ---
 ## Data Integrity
