@@ -5,8 +5,6 @@
 ## Agenda
 * Data Integrity
 * ER Diagrams
-* Functional Dependencies
-* Normalization
 
 ## Key Terms
 ### Schema
@@ -18,6 +16,7 @@
 > is the overall accuracy, completeness, and consistency of data
 > the maintenance of, and the assurance of, data accuracy and consistency over its entire life-cycle
 ### ER Diagrams
+> An entity–relationship model (or ER model) describes interrelated things of interest in a specific domain of knowledge. A basic ER model is composed of entity types (which classify the things of interest) and specifies relationships that can exist between entities (instances of those entity types)
 
 ## Schema
 A schema is a blueprint of a database. It is created before you actually construct the database so that the schema design can be reviewed. Schema diagrams are also a great way to document the database structure in one place.
@@ -127,7 +126,95 @@ INSERT INTO STUDENTS (id,name,age,phone,email,address,batch_id)
 
 ---
 
-## ER Diagrams
+## ER Models and Diagrams
+> "ER model" is short for "entity-relationship model," a high-level data model. As the name suggests, a data model depicts how a database is structured at a logical and visual level. In layman's terms, an ER model defines the elements and their relationship in a specific database. It's like a "blueprint" to your database, providing a simple view of the data.
+
+
+> Entity-relationship diagrams, also called ERDs or ER diagrams, are flowchart-like diagrams that explain the structure of entities, attributes, and their relationships in a database
+
+
+### Entity
+
+Entities represent a collection of data, using a rectangle with attributes ‘hanging’ off it, or box containing a list of its attributes.
+
+> An entity is something that is present in an organization or institute and needs to be represented in the database. They are primarily nouns such as customer, location, concept, event, or person. They are essential for the representation of data. These entities are made of attributes which in turn represent the entity.
+
+
+```mermaid
+erDiagram
+    STUDENT
+    MENTOR
+    BATCH
+    CLASS
+```
+
+### Attributes
+> An attribute is a characteristic related to the entity. These characteristics are used to understand the database in more detail and depth.
+
+
+Types of attributes
+* Simple - Only has a **single value**
+* Key - **Unique identifier** for a tuple
+* Derived - Value can be **derived from another attribute** 
+* Multi-valued - Can take **more than one value**
+* Composite - Consists of **two or more sub-attributes**
+
+Attributes in an ERD are represented by ellipses connected to the rectangular entity box. The various types of attributes and their visualisation is as follows:
+![Attribute Types](../media/attributes.png)
+
+Our `student` entity will look as follows
+![ER Diagram](../media/student-er.png)
+
+
+An alternate way of visualising attributes which is much similar to UML class diagrams
+```mermaid
+erDiagram
+    STUDENT {
+        int id
+        string name
+        int age
+        int phone
+        string email
+    }
+```
+### Relationships
+> A relationship is a connection between two entities, such as a student who goes to a school or an employee who works for a company. In the first case, "student" and "school" are two different entities linked by a relationship. Similarly, in the latter case, "employee" and "company" are two entities, and the relationship is "works for."
+
+
+#### Cardinality
+> Cardinality is the maximum times an entity can relate to an instance with another entity or entity set.
+
+> the number of interactions entities have with each other.
+
+**One to One (1:1)**
+>  A "one-to-one" relationship is seen when one instance of entity 1 is related to only one instance of entity 2 and vice-versa
+
+A student can only have one email address and one email address can be associated with only one student.
+![One to One](../media/one-to-one.png)
+
+An attribute shared by both entities can be added to either of the entities.
+**One to Many (1:m)**
+> When one instance of entity 1 is related to more than one instance of entity 2, the relationship is referred to as "one-to-many.
+
+A student can only be associated with one batch, but a batch can have many students.
+
+![One to Many](../media/one-to-many.png)
+
+An attribute shared by both entities can only be added to the entity which has multiple instances i.e. the M side.
+
+**Many to Many (m:n)**
+
+> When multiple instances of entity 1 are linked to multiple instances of entity 2, we have a "many-to-many" relationship. Imagine a scenario where an employee is assigned more than one project.
+
+A student can attend multiple classes and a class can have multiple students.
+
+![Many to Many](../media/many-to-many.png)
+
+An attribute shared by both entities has to be added to the relationship.
+
+#### Example
+![Example](../media/student-batch-er.png)
+
 ---
 ## References
 * [Data Integrity](https://en.wikipedia.org/wiki/Data_integrity)
