@@ -193,7 +193,7 @@ A student can only have one email address and one email address can be associate
 ![One to One](../media/one-to-one.png)
 
 An attribute shared by both entities can be added to either of the entities.
-**One to Many (1:m)**
+**One to Many or Many to one (1:m or m:1)**
 > When one instance of entity 1 is related to more than one instance of entity 2, the relationship is referred to as "one-to-many.
 
 A student can only be associated with one batch, but a batch can have many students.
