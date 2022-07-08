@@ -165,6 +165,7 @@ Attributes in an ERD are represented by ellipses connected to the rectangular en
 ![Attribute Types](../media/attributes.png)
 
 Our `student` entity will look as follows
+
 ![ER Diagram](../media/student-er.png)
 
 
