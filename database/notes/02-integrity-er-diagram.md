@@ -3,6 +3,7 @@
 ![ERD](https://www.memecreator.org/static/images/memes/5074790.jpg)
 
 ## Agenda
+* Database Schema
 * Data Integrity
 * ER Diagrams
 
@@ -75,9 +76,10 @@ INSERT INTO STUDENTS (id,name,age,phone,email,address,batch_id)
     VALUES (3,"John Watson",30,123456789,"i.am@sherlock.ed","221B Baker Street", 3);
 ```
 ![Duplicate error](../media/duplicate-error.png)
+
 As you can see, the database does not allow us to insert a duplicate row.
 
-![Gandalf](https://i.kym-cdn.com/entries/icons/original/000/002/144/You_Shall_Not_Pass!_0-1_screenshot.jpg)
+<img src="https://i.kym-cdn.com/entries/icons/original/000/002/144/You_Shall_Not_Pass!_0-1_screenshot.jpg" alt="Gandalf" width="300"/>
 
 ### Referential integrity
 > Referential integrity is a property of data stating that all its references are valid.
@@ -190,6 +192,7 @@ erDiagram
 >  A "one-to-one" relationship is seen when one instance of entity 1 is related to only one instance of entity 2 and vice-versa
 
 A student can only have one email address and one email address can be associated with only one student.
+
 ![One to One](../media/one-to-one.png)
 
 An attribute shared by both entities can be added to either of the entities.
