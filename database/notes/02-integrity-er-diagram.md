@@ -224,5 +224,9 @@ An attribute shared by both entities has to be added to the relationship.
 ## References
 * [Data Integrity](https://en.wikipedia.org/wiki/Data_integrity)
 * [What is data integrity?](https://database.guide/what-is-data-integrity/)
-## Reading List
+* [ERD Primer](https://arctype.com/blog/er-diagram/)
+* [ERD with draw.io](https://drawio-app.com/entity-relationship-diagrams-with-draw-io/)
 
+## Reading List
+* [Data Integrity with MySQL](http://download.nust.na/pub6/mysql/tech-resources/articles/mysql-data-integrity.html)
+* [ERD with Mermaid](https://mermaid-js.github.io/mermaid/#/entityRelationshipDiagram)
