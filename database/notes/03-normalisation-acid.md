@@ -17,8 +17,10 @@
 ### Data Normalisation
 > the process of splitting relations into well-structured relations that allow users to insert, delete, and update tuples without introducing database inconsistencies
 ### Transactions
-### ACID properties
+> A set of logically related operation. A transaction is an action or series of actions. It is performed by a single user to perform operations for accessing the contents of the database.
 
+### ACID properties
+> ACID (atomicity, consistency, isolation, durability) is a set of properties of database transactions intended to guarantee data validity despite errors, power failures, and other mishaps
 ## Data Anomalies
 
 > An anomaly is something that is unusual or unexpected; an abnormality
@@ -305,9 +307,69 @@ erDiagram
     STUDENT ||--|{ PHONE_NUMBER : has
 ```
 ## Transactions
-### ACID properties
+> A database transaction symbolizes a unit of work performed against a database, and treated in a coherent and reliable way independent of other transactions.
 
+Transactions in a database environment have two main purposes:
+
+* To provide reliable units of work that allow correct recovery from failures and keep a database consistent even in cases of system failure. 
+* To provide isolation between programs accessing a database concurrently. If this isolation is not provided, the programs' outcomes are possibly erroneous.
+
+Imagine a scenario where Alice has pay Bob 500 rupees.
+Instead of paying each other directly, they use a bank.
+
+Alice requests a payment to be made to Bob. The bank has to do two operations:
+1. Deduce the amount to be paid to Bob from Alice's account.
+2. Add the amount to be paid to Bob's account.
+   
+```mermaid
+    sequenceDiagram
+        actor Alice
+        participant Bank
+        actor Bob
+        Alice ->> Bank: Request transfer of 500 rupees
+        par Bank to Alice
+            Bank->>Alice: Debit 500 rupees
+        and Bank to Bob
+            Bank->>Bob: Credit 500 rupees
+        end
+```
+
+The above set of operations need to be performed in a single transaction else, in case of failure, the bank will be left in an inconsistent state.
+For example, the debit operation succeeds but the credit operation fails.
+Now Alice has 500 rupees less but Bob does not have 500 rupees more.
+
+### ACID properties
+A sequence of database operations that satisfies the ACID properties (which can be perceived as a single logical operation on the data) is called a transaction.
+
+![ACID properties](https://static.javatpoint.com/dbms/images/dbms-transaction-property.png)
+
+#### Atomicity
+> Atomicity is the guarantee that series of database operations in an atomic transaction will either all occur (a successful operation), or none will occur (an unsuccessful operation)
+
+If the logical transaction consists of transferring funds from Alice to Bob, this may be composed of 
+- first removing the amount from account A, 
+- then depositing the same amount in account B.
+ 
+We would not want to see the amount removed from Alice before we are sure it has also been transferred into Bob. Then, until both transactions have happened and the amount has been transferred to Bob, the logical transfer has not occurred.
+
+#### Consistency
+* The integrity constraints are maintained so that the database is consistent before and after the transaction.
+* The execution of a transaction will leave a database in either its prior stable state or a new stable state.
+
+In the banking example of Alice and Bob, the total value of the accounts is 2000, split equally. Now if Alice transfers 500 rupees to Bob, the total value of the accounts should still be the same. 
+
+But in case of credit failure, the total value will now be 1500 and hence the system will be left in an inconsistent state.
+#### Isolation
+> Ensures that concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially
+#### Durability
+> Guarantees that once a transaction has been committed, it will remain committed even in the case of a system failure (e.g., power outage or crash). 
+> This usually means that completed transactions (or their effects) are recorded in non-volatile memory.
 ## References
 * [Data Anomalies in DBMS](https://www.thecomputingteacher.com/csc/index.php/man-data/data/anomalies)
 * [Data Anomalies II](https://learn.saylor.org/mod/page/view.php?id=23144&forceview=1#:~:text=An%20insertion%20anomaly%20is%20the,be%20entered%20into%20the%20database.)
 * [Functional Dependency](https://en.wikipedia.org/wiki/Functional_dependency)
+* [ACID](https://www.javatpoint.com/dbms-transaction-property)
+* [Transactions](https://en.wikipedia.org/wiki/Database_transaction)
+
+## Further Reading
+* [Isolation](https://en.wikipedia.org/wiki/Isolation_(database_systems))
