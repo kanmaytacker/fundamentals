@@ -28,3 +28,6 @@ Download the ER diagram from [here](media/student-er.drawio) and import it into 
 
 ## Online Playgrounds
 * [SQL Fiddle](http://sqlfiddle.com/)
+
+## Links
+* [Awesome database learning](https://github.com/pingcap/awesome-database-learning)
