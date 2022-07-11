@@ -4,6 +4,7 @@
 | ---------------------------- | ----------------------------------------- | ------------------------------------------ |
 | Database Fundamentals        | [link](notes/01-database-fundamentals.md) | [link](notes/01-database-fundamentals.pdf) |
 | Data Integrity & ER Diagrams | [link](notes/02-integrity-er-diagram.md)  | [link](notes/02-integrity-er-diagram.pdf)  |
+| Data Normalisation and ACID  | [link](notes/03-normalisation-acid.md)    | [link](notes/03-normalisation-acid.pdf)    |
 
 
 ## Assignments
