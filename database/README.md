@@ -1,10 +1,11 @@
 ## Notes
 <!-- Table with .md and .pdf links -->
-| Name                         | .md                                       | .pdf                                       |
-| ---------------------------- | ----------------------------------------- | ------------------------------------------ |
-| Database Fundamentals        | [link](notes/01-database-fundamentals.md) | [link](notes/01-database-fundamentals.pdf) |
-| Data Integrity & ER Diagrams | [link](notes/02-integrity-er-diagram.md)  | [link](notes/02-integrity-er-diagram.pdf)  |
-| Data Normalisation and ACID  | [link](notes/03-normalisation-acid.md)    | [link](notes/03-normalisation-acid.pdf)    |
+| Name                         | .md                                    | .pdf                                    | MCQs                                  |
+| ---------------------------- | -------------------------------------- | --------------------------------------- | ------------------------------------- |
+| Database Fundamentals        | [1](notes/01-database-fundamentals.md) | [2](notes/01-database-fundamentals.pdf) | [3](mcqs/01-database-fundamentals.md) |
+| Data Integrity & ER Diagrams | [1](notes/02-integrity-er-diagram.md)  | [2](notes/02-integrity-er-diagram.pdf)  | [3](mcqs/02-integrity-er-diagram.md)  |
+| Data Normalisation and ACID  | [1](notes/03-normalisation-acid.md)    | [2](notes/03-normalisation-acid.pdf)    | [3](mcqs/03-normalisation-acid.md)    |
+| Transactions and Indexes     | [1](notes/04-transactions-indexes.md)  | [2](notes/04-transactions-indexes.pdf)  | [3](mcqs/04-transactions-indexes.md)  |
 
 
 ## Assignments
