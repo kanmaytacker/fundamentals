@@ -5,6 +5,12 @@
 * JOIN
 
 
+> **Note**
+>
+> The script to create the database and insert data can be found [here](../code/create_database.sql). \
+> Once your database is set up, download the worksheet from [here](../notes/05-sql-primer-worksheet.md) and start writing some queries!
+> If you get stuck, you can find the answers [here](../notes/05-sql-primer-worksheet-answers.md).
+
 ## CRUD with SQL
 
 ### Create rows
