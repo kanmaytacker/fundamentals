@@ -2,12 +2,12 @@
 # Queries
 
 ## Insert queries
-1. Insert a row with your name and all the other fields
+1. Insert a row with your name and all the other fields in **students** table
 ```sql
     
 ```
 
-1. Insert a row with just mandatory fields
+1. Insert a row with just mandatory fields in **students** table
 ```sql
     
 ```
