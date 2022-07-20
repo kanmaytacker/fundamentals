@@ -211,3 +211,11 @@ VALUES
         80,
         5
     );
+
+INSERT INTO 
+students (first_name, last_name, email, iq)
+VALUES ("Moriarty", "Patel", "mo@sherlock.ed", 170);
+
+INSERT INTO 
+batches (name, start_date)
+VALUES ("Crime Academy", "2022-10-01");
