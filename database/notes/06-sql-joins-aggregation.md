@@ -177,3 +177,154 @@ Note that different from the INNER JOIN, LEFT JOIN , and RIGHT JOIN clauses, the
 If you add a WHERE clause, in case table t1 and t2 has a relationship, the CROSS JOIN works like the INNER JOIN.
 
 ---
+
+## Aggregate Functions
+
+> MySQL's aggregate function is used to perform calculations on multiple values and return the result in a single value like the average of all values, the sum of all values, and maximum & minimum value among certain groups of values.
+
+> We mainly use the aggregate functions in databases, spreadsheets and many other data manipulation software packages. In the context of business, different organization levels need different information such as top levels managers interested in knowing whole figures and not the individual details. These functions produce the summarised data from our database. Thus, they are extensively used in economics and finance to represent the economic health or stock and sector performance.
+
+The ISO SQL standard defines the following aggregate functions:
+
+| Function | Description                                   |
+| -------- | --------------------------------------------- |
+| MIN      | Return the minimum value                      |
+| MAX      | Return the maximum value                      |
+| SUM      | Return the sum of all values                  |
+| AVG      | Return the average value of the argument      |
+| COUNT    | Return a count of the number of rows returned |
+
+
+### Get the minimum value
+
+**Keyword**: `MIN`
+**Syntax**: `SELECT MIN(column_name) FROM table_name`
+
+Getting the minimum value without using the aggregate function could be done by using the `ORDER BY` clause.
+
+```sql
+SELECT 
+    first_name, iq
+FROM
+    students
+ORDER BY iq
+LIMIT 1;
+```
+
+This would give the correct answer but not in the case of NULL values. By default, MySQL will return the NULL value at the top of the sorted rows. Special handling will have to be done to get the correct result.
+
+This is why we can use the aggregate function `MIN` to get the minimum value.
+
+```sql
+SELECT 
+    MIN(iq)
+FROM
+    students;
+```
+
+**The aggregate functions ignore the NULL values.**
+
+### Get the maximum value
+
+**Keyword**: `MAX`
+**Syntax**: `SELECT MAX(column_name) FROM table_name`
+
+To get the maximum IQ in students, we can use the aggregate function `MAX`.
+
+```sql
+SELECT 
+    MAX(iq)
+FROM
+    students;
+```
+
+### Get the sum of all values
+
+**Keyword**: `SUM`
+**Syntax**: `SELECT SUM(column_name) FROM table_name`
+
+To get the sum of all the IQ in students, we can use the aggregate function `SUM`.
+
+```sql
+SELECT 
+    SUM(iq)
+FROM
+    students;
+```
+
+### Get the average value
+
+**Keyword**: `AVG`
+**Syntax**: `SELECT AVG(column_name) FROM table_name`
+
+To get the average IQ in students, we can use the aggregate function `AVG`.
+
+```sql
+SELECT 
+    AVG(iq)
+FROM
+    students;
+```
+
+### Get the number of rows
+
+**Keyword**: `COUNT`
+**Syntax**: `SELECT COUNT(column_name) FROM table_name`
+
+To get the number of rows in students, we can use the aggregate function `COUNT`.
+
+```sql
+SELECT 
+    COUNT(*)
+FROM
+    students;
+```
+
+Using `*` instead of a column name will return the number of rows in the table whereas using a column name will return the number of rows that have a non-null value in a column.
+
+## GROUP BY clause
+
+The GROUP BY clause groups a set of rows into a set of summary rows by values of columns or expressions. The GROUP BY clause returns one row for each group. In other words, it reduces the number of rows in the result set
+
+**Keyword**: `GROUP BY`
+**Syntax**: `SELECT column1, column2, ... FROM table_name GROUP BY column1, column2, ...`
+
+In this syntax, you place the GROUP BY clause after the FROM and WHERE clauses. After the GROUP BY keywords, you place is a list of comma-separated columns or expressions to group rows.
+
+> MySQL evaluates the GROUP BY clause after the FROM and WHERE clauses and before the HAVING, SELECT, DISTINCT, ORDER BY and LIMIT clauses
+
+![Group By](https://www.mysqltutorial.org/wp-content/uploads/2021/07/MySQL-Group-By.svg)
+
+Fields that are not encapsulated within an aggregate function and must be included in the GROUP BY Clause at the end of the SQL statement.
+
+For example, the following query will return the number of students in each batch:
+
+```sql
+SELECT 
+    batch_id, AVG(iq)
+FROM
+    students
+GROUP BY batch_id;
+```
+
+You can also use the `HAVING` clause to filter the result set.
+For example, the following query will return the number of students in each batch where each batches average IQ is greater than or equal to 100:
+```sql
+SELECT 
+    batch_id, AVG(iq)
+FROM
+    students
+GROUP BY batch_id
+HAVING AVG(iq) >= 100;
+```
+
+
+## Problems
+1. [Simple - I](https://leetcode.com/problems/big-countries/)
+2. [Simple - II](https://leetcode.com/problems/find-customer-referee//)
+3. [Joins - I](https://leetcode.com/problems/employees-earning-more-than-their-managers/)
+4. [Joins - II](https://leetcode.com/problems/combine-two-tables/)
+5. [Aggregation - I](https://leetcode.com/problems/duplicate-emails/)
+6. [Join - III](https://leetcode.com/problems/delete-duplicate-emails/)
+7. [Aggregation - II](https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/)
+8.  [Aggregation - III](https://leetcode.com/problems/classes-more-than-5-students/)
