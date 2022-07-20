@@ -185,7 +185,7 @@ SELECT * FROM students WHERE first_name LIKE 'T_';
      DELETE FROM students WHERE id IN (1, 2, 3);
      ```
 
-## Join
+## Joins
 
 Join is the widely-used clause in the SQL Server essentially to combine and retrieve data from two or more tables. In a real-world relational database, data is structured in many tables and which is why, there is a constant need to join these multiple tables based on logical relationships between them.
 
