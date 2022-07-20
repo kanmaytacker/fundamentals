@@ -7,7 +7,7 @@
     
 ```
 
-1. Insert a row with just mandatory fields in **students** table
+2. Insert a row with just mandatory fields in **students** table
 ```sql
     
 ```
@@ -87,7 +87,7 @@
     ```sql
     
     ```
-15. Get all students without the first name `John` or last name `Mycroft`
+15. Get all students without the first name `John` or first name `Mycroft`
     
     ```sql
     
@@ -111,7 +111,7 @@
     ```sql
     
     ```
-20. Get all students in Jhansi and London
+20. Get all students from Jhansi and London
     
     ```sql
     
@@ -172,7 +172,7 @@
      
      ```
  
-2. Delete a multiple rows
+2. Delete multiple rows
  
      ```sql
      
