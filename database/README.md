@@ -8,6 +8,7 @@
 | Transactions and Indexes     | [1](notes/04-transactions-indexes.md)  | [2](notes/04-transactions-indexes.pdf)  | [3](notes/04-transactions-indexes-hw.pdf)  | [4](mcqs/04-transactions-indexes.md)  | _ | _ |
 | SQL Primer                   | [1](notes/05-sql-primer.md)            | [2](notes/05-sql-primer.pdf)            | [3](notes/05-sql-primer-hw.pdf)            | [4](mcqs/05-sql-primer.md)            | [5](notes/05-sql-primer-worksheet.md) | [6](notes/05-sql-primer-worksheet-answers.md) |
 | SQL Joins and Aggregation | [1](notes/06-sql-joins-aggregation.md) | [2](notes/06-sql-joins-aggregation.pdf) | [3](notes/06-sql-joins-aggregation-hw.pdf) | [4](mcqs/06-sql-joins-aggregation.md) | [5](notes/06-sql-joins-aggregation-worksheet.md) | [6](notes/06-sql-joins-aggregation-worksheet-answers.md) |
+| Subqueries and Functions | [1](notes/07-subqueries-functions.md)  | [2](notes/07-subqueries-functions.pdf)  | [3](notes/07-subqueries-functions-hw.pdf)  | [4](mcqs/07-subqueries-functions.md)  | [5](notes/07-subqueries-functions-worksheet.md) | [6](notes/07-subqueries-functions-worksheet-answers.md) |
 
 
 ## Assignments
@@ -19,6 +20,21 @@ Download the ER diagram from [here](media/student-er.drawio) and import it into 
 * Modify `batch` to add more attributes
 * Add relationships between the `mentor` and `batch` entities. A mentor can be assigned to multiple batches and a batch can have multiple mentors.
 
+
+### Problem sets
+1. [**Simple - I**](https://leetcode.com/problems/big-countries/)
+2. [Simple - II](https://leetcode.com/problems/find-customer-referee//)
+3. [**Joins - I**](https://leetcode.com/problems/employees-earning-more-than-their-managers/)
+4. [Joins - II](https://leetcode.com/problems/combine-two-tables/)
+5. [**Aggregation - I**](https://leetcode.com/problems/duplicate-emails/)
+6. [Join - III](https://leetcode.com/problems/delete-duplicate-emails/)
+7. [Aggregation - II](https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/)
+8.  [Aggregation - III](https://leetcode.com/problems/classes-more-than-5-students/)
+9.  [Subqueries - I](https://leetcode.com/problems/customers-who-never-order/)
+10. [Subqueries - II](https://leetcode.com/problems/sales-person/)
+11. [Dates - I](https://leetcode.com/problems/rising-temperature/)
+
+Bold problems were solved during the session.
 
 ## RDBMS
 * [MySQL](https://www.mysql.com/)
