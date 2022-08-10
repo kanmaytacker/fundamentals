@@ -23,7 +23,7 @@ Download the ER diagram from [here](media/student-er.drawio) and import it into 
 
 ### Problem sets
 1. [**Simple - I**](https://leetcode.com/problems/big-countries/)
-2. [Simple - II](https://leetcode.com/problems/find-customer-referee//)
+2. [Simple - II](https://leetcode.com/problems/find-customer-referee/)
 3. [**Joins - I**](https://leetcode.com/problems/employees-earning-more-than-their-managers/)
 4. [Joins - II](https://leetcode.com/problems/combine-two-tables/)
 5. [**Aggregation - I**](https://leetcode.com/problems/duplicate-emails/)
