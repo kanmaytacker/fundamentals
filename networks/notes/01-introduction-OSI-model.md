@@ -140,4 +140,11 @@ The Open Systems Interconnection (OSI) model describes seven layers that compute
 
 ![vs](https://www.imperva.com/learn/wp-content/uploads/sites/13/2020/02/OSI-vs.-TCPIP-models.jpg.webp)
 
+## Some commands to get started
+
+1. Find the IP address of the server you want to connect to. `nslookup <domain>`
+2. Find the domain name from a given IP address. `whois <ip>`
+3. `ifconfig`
+4. Follow a network packet `traceroute <domain>`
+
 
