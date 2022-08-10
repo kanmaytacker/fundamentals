@@ -211,5 +211,5 @@ For example, we want to get the batch names of all the students along with their
 This can be achieved by using the following SQL query:
 
 ```sql
-SELECT s.first_name, s.last_name, b.batch_name FROM students s JOIN batches ON s.batch_id = b.id;
+SELECT s.first_name, s.last_name, b.batch_name FROM students s JOIN batches b ON s.batch_id = b.id;
 ```
