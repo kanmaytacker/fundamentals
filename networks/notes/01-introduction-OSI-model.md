@@ -75,7 +75,10 @@ We are unaware of how the letter actually gets to the destination. Did it go in 
    * Browser checks if the domain is in its cache. (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns)
    * If not found in the cache, the browser also checks the local hosts file.
    * If the browser does not have it cached nor can find it in the hosts file then it makes a request to the DNS server configured in the network stack. This is typically the local router or the ISP's caching DNS server.
- 4. Once the browser receives the IP address of the destination server, it takes that and the given port number from the URL, the browser opens a connection to the server and sends the request.
+ 4. Once the browser receives the IP address of the destination server, it takes that and the given port number from the URL, the browser opens a connection to the server and sends the HTTP request.
+ 5. The browser receives HTTP response and may close the TCP connection, or reuse it for another request
+ 6. Finally, the browser decodes the response and displays the result on the screen.
+
 
 ## What is the OSI model?
 
