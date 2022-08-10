@@ -31,10 +31,12 @@ A computer network is a system that connects two or more computing devices for t
 ### LAN
 
 ![LAN](https://bam.files.bbci.co.uk/bam/live/content/ztcw6sg/large)
+
 A local area network is when computers or devices are connected together over a small geographical area, such as within a home, a building or one site. A LAN can be created to share data or hardware such as a printer, or to share an internet connection
 
 ### WAN
 ![WAN](https://bam.files.bbci.co.uk/bam/live/content/zh4jtfr/large)
+
 A wide area network is when computers or devices are connected together over a large geographical area. For example, a company with an office in London and another in Beijing would use a WAN to allow the employees to share one network. Some companies will connect a number of LANs in different areas together to create a WAN.
 
 ### Why do we care?
@@ -42,6 +44,8 @@ Using a network allows you to share:
 * hardware, such as a printer
 * software, allowing multiple users to run the same programs on different computers
 * data, so that other people can access shared work and you can access your data from any computer on the network
+
+
 ![](https://bam.files.bbci.co.uk/bam/live/content/zywxfg8/large)
 
 ### ARPANET
@@ -86,6 +90,7 @@ Each layer of the OSI Model handles a specific job and communicates with the lay
 ### Application
 
 ![Application Layer](https://cf-assets.www.cloudflare.com/slt3lc6tev37/koKt5UKczRq47xJsexfBV/c1e1b2ab237063354915d16072157bac/7-application-layer.svg)
+
 > A user retrieves a Web page from a server in New York by typing a URL into a browser and clicking the enter key. The server receives the request, finds the page on its hard drive and sends it back to the user. Neither the user nor the client or server software is aware of the way the messages were delivered -- did they go over wireless connections, how many routers did they pass through, who manufactured the routers, was the server a PC or a rack-mounted machine, was it running IIS or Apache, etc.? 
 
 
@@ -94,6 +99,7 @@ This is the only layer that directly interacts with data from the user. Software
 ### Presentation
 
 ![Presentation Layer](https://cf-assets.www.cloudflare.com/slt3lc6tev37/60dPoRIz0Es5TjDDncEp2M/7ad742131addcbe5dc6baa16a93bf189/6-presentation-layer.svg)
+
 This layer is primarily responsible for preparing data so that it can be used by the application layer; in other words, layer 6 makes the data presentable for applications to consume. The presentation layer is responsible for translation, encryption, and compression of data.
 
 Two communicating devices communicating may be using different encoding methods, so layer 6 is responsible for translating incoming data into a syntax that the application layer of the receiving device can understand.
