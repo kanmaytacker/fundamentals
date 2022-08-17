@@ -152,6 +152,7 @@ Steps 1 and 2 establish and acknowledge the sequence number for one direction. S
 #### TCP header
 
 ![TCP header](https://networklessons.com/wp-content/uploads/2015/07/tcp-header.png)
+
 The fields in a TCP header are:
 
 * `Source port`: this is a 16 bit field that specifies the port number of the sender.
