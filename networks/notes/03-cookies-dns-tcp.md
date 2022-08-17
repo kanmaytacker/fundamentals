@@ -187,3 +187,4 @@ The fields in a TCP header are:
 
 ## Reading list
 * [Cookies in depth](https://humanwhocodes.com/blog/2009/05/05/http-cookies-explained/)
+* [Sliding Window](http://www.cs.uni.edu/~diesburg/courses/cs3470_fa14/sessions/s29/s29.pdf)
