@@ -12,22 +12,22 @@ def main(host: str, port: int) -> None:
     # Listen for incoming connections
     sock.listen()
 
-    # Accept connections
-    conn, addr = sock.accept()
-    print(f'Connection from {conn.getsockname()} to {conn.getpeername()}')
+    while True:
+        # Accept connections
+        conn, _ = sock.accept()
+        print(f'Connection from {conn.getsockname()} to {conn.getpeername()}')
 
-    # Receive data
-    data = conn.recv(1024)
+        # Receive data
+        data = conn.recv(1024)
 
-    # Print data
-    print(f'Received {data}')
+        # Print data
+        print(f'Received {data}')
 
-    # Send echo
-    conn.sendall(data.upper())
+        # Send echo
+        conn.sendall(data.upper())
 
-    # Close the connection
-    conn.close()
-    sock.close()
+        # Close the connection
+        conn.close()
 
 if __name__ == '__main__':
     
