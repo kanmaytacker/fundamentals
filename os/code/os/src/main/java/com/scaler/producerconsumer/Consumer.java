@@ -24,10 +24,8 @@ public class Consumer implements Runnable {
                 throw new RuntimeException("Error acquiring semaphore " + e);
             }
 
-            if (store.size() > 0) {
-                store.remove();
-                System.out.println("Consumed: " + name + " Left units :" + store.size());
-            }
+            store.remove();
+            System.out.println("Consumed: " + name + " Left units :" + store.size());
 
             forProducer.release();
 

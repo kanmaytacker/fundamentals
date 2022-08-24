@@ -1,8 +1,8 @@
 package com.scaler.producerconsumer;
 
-import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
@@ -12,7 +12,7 @@ public class Runner {
     private static final Set<String> consumerNames = Set.of("c1", "c2", "c3", "c4");
 
     public static void main(String[] args) {
-        Queue<UnitOfWork> store = new ArrayDeque<>();
+        Queue<UnitOfWork> store = new ConcurrentLinkedDeque<>();
         int maxSize = 20;
 
         Semaphore forProducer = new Semaphore(maxSize);

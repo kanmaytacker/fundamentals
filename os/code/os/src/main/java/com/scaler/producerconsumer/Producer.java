@@ -25,10 +25,8 @@ public class Producer implements Runnable {
                 throw new RuntimeException("Error acquiring semaphore " + e);
             }
 
-            if (store.size() < maxSize) {
-                store.add(new UnitOfWork());
-                System.out.println("Produced: " + name + " Left units :" + store.size());
-            }
+            store.add(new UnitOfWork());
+            System.out.println("Produced: " + name + " Left units :" + store.size());
 
             forConsumer.release();
         }
