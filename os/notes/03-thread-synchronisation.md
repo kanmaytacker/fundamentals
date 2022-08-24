@@ -117,4 +117,10 @@ while (true) {
 ```
 
 ## Concurrent Data structures
-A concurrent data structure is a particular way of storing and organizing data for access by multiple computing threads (or processes) on a computer.
+
+A concurrent data structure is a particular way of storing and organizing data for access by multiple computing threads (or processes) on a computer. A shared mutable state very easily leads to problems when concurrency is involved. If access to shared mutable objects is not managed properly, applications can quickly become prone to some hard-to-detect concurrency errors.
+
+Some common concurrent data structures:
+1. [Atomic Integer](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/AtomicInteger.html#:~:text=An%20AtomicInteger%20is%20used%20in,deal%20with%20numerically%2Dbased%20classes) 
+    > The AtomicInteger class protects an underlying int value by providing methods that perform atomic operations on the value
+2. [Concurrent hash maps](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentHashMap.html)
