@@ -3,6 +3,7 @@ package com.scaler.producerconsumer;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Set;
+import java.util.concurrent.Semaphore;
 import java.util.stream.Collectors;
 
 public class Runner {
@@ -14,14 +15,17 @@ public class Runner {
         Queue<UnitOfWork> store = new ArrayDeque<>();
         int maxSize = 20;
 
+        Semaphore forProducer = new Semaphore(maxSize);
+        Semaphore forConsumer = new Semaphore(0);
+
         Set<Producer> producers = producerNames
                 .stream()
-                .map(name -> new Producer(store, maxSize, name))
+                .map(name -> new Producer(store, maxSize, name, forProducer, forConsumer))
                 .collect(Collectors.toSet());
 
         Set<Consumer> consumers = consumerNames
                 .stream()
-                .map(name -> new Consumer(store, name))
+                .map(name -> new Consumer(store, name, forProducer, forConsumer))
                 .collect(Collectors.toSet());
 
         producers.forEach(producer -> new Thread(producer).start());
