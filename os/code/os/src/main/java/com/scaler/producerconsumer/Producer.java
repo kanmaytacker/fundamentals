@@ -13,16 +13,17 @@ public class Producer implements Runnable {
     private int maxSize;
     private String name;
 
-
     @Override
     public void run() {
-       while (true) {
-        if (store.size() < maxSize) {
-            store.add(new UnitOfWork());
-            System.out.println("Produced: " + name + " Left units :" + store.size());
+        while (true) {
+            synchronized (store) {
+                if (store.size() < maxSize) {
+                    store.add(new UnitOfWork());
+                    System.out.println("Produced: " + name + " Left units :" + store.size());
+                }
+            }
         }
-       }
-        
+
     }
-    
+
 }
