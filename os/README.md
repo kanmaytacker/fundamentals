@@ -1,8 +1,9 @@
 ## Notes
 <!-- Table with .md and .pdf links -->
-| Name                         | .md                                    | .pdf                                    | Handwritten                                | MCQs                                  | Worksheet | Worksheet with Answers |
-| ---------------------------- | -------------------------------------- | --------------------------------------- | ------------------------------------------ | ------------------------------------- | --------- | ---------------------- |
-| Thread Synchronisation        | [1](notes/03-thread-synchronisation.md) | [2](notes/03-thread-synchronisation.pdf) | [3](notes/03-thread-synchronisation-hw.pdf) | [4](mcqs/03-thread-synchronisation.md) | _ | _ |
+| Name                   | .md                                     | .pdf                                     | Handwritten                                 | MCQs                                   | Worksheet | Worksheet with Answers |
+| ---------------------- | --------------------------------------- | ---------------------------------------- | ------------------------------------------- | -------------------------------------- | --------- | ---------------------- |
+| Thread Synchronisation | [1](notes/03-thread-synchronisation.md) | [2](notes/03-thread-synchronisation.pdf) | [3](notes/03-thread-synchronisation-hw.pdf) | [4](mcqs/03-thread-synchronisation.md) | _         | _                      |
+| Memory management     | [1](notes/04-memory-management.md)       | [2](notes/04-memory-management.pdf)       | [3](notes/04-memory-management-hw.pdf)       | [4](mcqs/04-memory-management.md)       | _         | _                      |
 
 ## Problem sets
 1. [**Print in order**](https://leetcode.com/problems/print-in-order/submissions/)
