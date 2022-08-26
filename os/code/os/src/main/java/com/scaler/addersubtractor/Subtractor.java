@@ -1,7 +1,5 @@
 package com.scaler.addersubtractor;
 
-import java.util.concurrent.locks.Lock;
-
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -12,7 +10,17 @@ public class Subtractor implements Runnable {
     public void run() {
 
         for (int i = 1; i <= 100; ++i) {
-            count.getValue().getAndAdd(-i);
+            
+            int value = count.getValue();
+            try {
+                Thread.sleep(50);
+            } catch (Exception e) {
+                System.out.println("Something wrong happened");
+            }
+
+            int nextValue = value - i;
+            count.setValue(nextValue);
+
             try {
                 Thread.sleep(10);
             } catch (Exception e) {

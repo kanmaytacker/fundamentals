@@ -1,15 +1,13 @@
 package com.scaler.addersubtractor;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Count {
-    private AtomicInteger value = new AtomicInteger(0);
+    private volatile int value = 0;
 
-    public AtomicInteger getValue() {
+    public int getValue() {
         return value;
     }
 
-    public void setValue(AtomicInteger value) {
+    public void setValue(int value) {
         this.value = value;
     }
 }
