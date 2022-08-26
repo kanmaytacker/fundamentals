@@ -186,7 +186,8 @@ The page replacement algorithms in which Belady’s Anomaly occurs the most incl
 * First In First Out (FIFO)
 * Second Chance Algorithm
 * Random Page Replacement Algorithm
-
+ 
+ **dcbadcedcbae**
 ![Belady's Anomaly Example](https://prepinsta.com/wp-content/uploads/2021/02/Example-3-of-belady.webp)
 
 ![Belady's Anomaly Example 2](https://prepinsta.com/wp-content/uploads/2021/02/example-4-frames-1.webp)
