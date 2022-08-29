@@ -8,6 +8,7 @@
     - [Row Number function](#row-number-function)
     - [Other window functions](#other-window-functions)
   - [Indexes](#indexes)
+    - [Query Execution](#query-execution)
     - [Types of scans](#types-of-scans)
       - [Full table scans](#full-table-scans)
       - [Full Index scan](#full-index-scan)
@@ -207,6 +208,25 @@ You can also create a composite index using the same syntax.
 CREATE INDEX phone_email on students(phone, email);
 ```
 
+### Query Execution
+The following steps happen when you execute a query:
+1. The client sends the SQL statement to the server.
+2. The server checks the query cache. If there’s a hit, it returns the stored result from the cache; otherwise, it passes the SQL statement to the next step.
+3. The server parses, preprocesses, and optimizes the SQL into a query execution plan.
+4. The query execution engine executes the plan by making calls to the storage engine API.
+5. The server sends the result to the client.
+
+
+![Query execution](https://www.oreilly.com/library/view/high-performance-mysql/9780596101718/httpatomoreillycomsourceoreillyimages206456.png)
+
+To begin, MySQL’s parser breaks the query into tokens and builds a “parse tree” from them. The parser uses MySQL’s SQL grammar to interpret and validate the query. For instance, it ensures that the tokens in the query are valid and in the proper order, and it checks for mistakes such as quoted strings that aren’t terminated.
+
+The preprocessor then checks the resulting parse tree for additional semantics that the parser can’t resolve. For example, it checks that tables and columns exist, and it resolves names and aliases to ensure that column references aren’t ambiguous.
+
+Next, the preprocessor checks privileges. This is normally very fast unless your server has large numbers of privileges.
+
+MySQL uses a cost-based optimizer, which means it tries to predict the cost of various execution plans and choose the least expensive. The unit of cost is a single random four-kilobyte data page read.
+
 ### Types of scans
 #### Full table scans
 A full table scan (also known as a sequential scan) is a scan made on a database where each row of the table is read in a sequential (serial) order and the columns encountered are checked for the validity of a condition. Full table scans are usually the slowest method of scanning a table due to the heavy amount of I/O reads required from the disk which consists of multiple seeks as well as costly disk to memory transfers.
@@ -239,4 +259,5 @@ This happens when you specify a condition in WHERE clause like searching an empl
 * Avoid unnecessary columns in SELECT clause
     Instead of using ‘SELECT *’, always specify columns in the SELECT clause to improve MySQL performance. Because unnecessary columns cause additional load on the database, slowing down its performance as well whole systematic process.
 * Pagination
+* Avoid SELECT DISTINCT
 
