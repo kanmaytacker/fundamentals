@@ -22,6 +22,7 @@
   - [Abstraction](#abstraction-1)
   - [Encapsulation](#encapsulation-1)
     - [Classes](#classes-1)
+  - [Reading List](#reading-list)
 
 ## Key terms
 ### LLD
@@ -257,3 +258,10 @@ instance2.name = "Asia Cup 2023";
 System.out.println(instance1.name); // Asia Cup 2022
 System.out.println(instance2.name); // Asia Cup 2023
 ```
+
+## Reading List
+* [OOP vs Procedural vs Functional Programming](scaler.com/topics/java/oop-vs-functional-vs-procedural/)
+* [Banana-gorilla problem](https://dev.to/efpage/what-s-wrong-with-the-gorilla-2l4j#:~:text=Joe%20Armstrong%2C%20the%20principal%20inventor,and%20the%20entire%20jungle.%22.)
+* [Abstraction](https://levelup.gitconnected.com/abstraction-in-object-oriented-programming-a28a0e534f75)
+* [Abstraction in Python](https://www.askpython.com/python/oops/abstraction-in-python)
+* [Abstraction in Javascript](https://viktor-kukurba.medium.com/object-oriented-programming-in-javascript-1-abstraction-c47307c469d1)
