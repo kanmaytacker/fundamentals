@@ -1,2 +1,3 @@
 os/code/target/*
-database/code/__pycache__/
+database/code/__pycache__
+*.class
