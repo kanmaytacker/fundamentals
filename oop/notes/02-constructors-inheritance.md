@@ -237,4 +237,5 @@ The "diamond problem" (sometimes referred to as the "Deadly Diamond of Death") i
 
 ## Reading list
 * [Deadly Diamond of Death](https://medium.com/@harshamw/deadly-diamond-of-death-e8bb4355c343)
+* [Detailed explanation of the diamond problem](https://www.cs.cornell.edu/courses/JavaAndDS/abstractInterface/05diamond.pdf)
 * [Sealed classes](https://www.baeldung.com/java-sealed-classes-interfaces)
