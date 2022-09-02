@@ -1,14 +1,20 @@
 package com.scaler.lld.basics;
 
 public class OopBankAccount {
-    private Integer number;
-    private String name;
-    private Integer balance;
+    public int number;
+    public String name;
+    public Integer balance;
 
     public OopBankAccount(Integer number, Integer balance, String name) {
         this.number = number;
         this.balance = balance;
         this.name = name;
+    }
+
+    public OopBankAccount(OopBankAccount other) {
+        number = other.number;
+        balance = other.balance;
+        name = other.name;
     }
 
     // GETTERS AND SETTERS START  
