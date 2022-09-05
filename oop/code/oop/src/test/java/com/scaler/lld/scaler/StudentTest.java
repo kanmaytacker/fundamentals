@@ -28,6 +28,11 @@ public class StudentTest {
         assertEquals("If status is not passed to ctor, status should be active", StudentStatus.ACTIVE, student.getStatus());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testParametrisedCtorWithInvalidPsp() {
+        new Student("John Doe", "john@doe.in", "Batch 1", 101);
+    }
+
 }
 
 // Coverage - % of code your test cases cover - 80%

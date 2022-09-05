@@ -21,6 +21,10 @@ public class Student {
         this.name = name;
         this.email = email;
         this.batchName = batchName;
+
+        if (psp < 0 || psp > 100) {
+            throw new IllegalArgumentException("PSP should be between 0 and 100");
+        }
         this.psp = psp;
     }
 
