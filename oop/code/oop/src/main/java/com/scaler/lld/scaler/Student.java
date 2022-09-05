@@ -7,10 +7,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Student {
+public class Student extends User {
 
-    private String name;
-    private String email;
     private String batchName;
     private Integer psp;
     private StudentStatus status = StudentStatus.ACTIVE; // ACTIVE, PAUSED, COMPLETED
@@ -18,8 +16,7 @@ public class Student {
     // Define parametrised constructor
 
     public Student(String name, String email, String batchName, Integer psp) {
-        this.name = name;
-        this.email = email;
+        super(name, email);
         this.batchName = batchName;
 
         if (psp < 0 || psp > 100) {
