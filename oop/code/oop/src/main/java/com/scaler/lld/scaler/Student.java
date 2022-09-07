@@ -1,12 +1,10 @@
 package com.scaler.lld.scaler;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 public class Student extends User {
 
     private String batchName;
@@ -25,9 +23,16 @@ public class Student extends User {
         this.psp = psp;
     }
 
-    public void changeBatch(String batchName) {
+    public Student() {
+    }
+
+    void changeBatch(String batchName) {
         this.batchName = batchName;
     }
 
+    @Override
+    public void printInfo() {
+        System.out.println("\nStudent: " + getName() + " " + getBatchName());
+    }
 
 }
