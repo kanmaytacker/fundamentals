@@ -30,11 +30,13 @@
 
 > When designing our classes, we should aim to put related features together, so whenever they tend to change they change for the same reason. And we should try to separate features if they will change for different reasons.
 
-<img
-    src="https://miro.medium.com/max/1400/1*P3oONz9Da3Tc1w97fMV73Q.png"
-    alt="Single responsibility principle"
-    width="200"
-/>
+<p align="center">
+    <img
+        src="https://miro.medium.com/max/1400/1*P3oONz9Da3Tc1w97fMV73Q.png"
+        alt="Single responsibility principle"
+        width="500"
+    />
+</p>
 
 The Single Responsibility Principle states that a class should do one thing, and therefore it should have only a single reason to change. Only one potential change (database logic, logging logic, and so on.) in the software’s specification should be able to affect the specification of the class.
 
@@ -162,11 +164,14 @@ public void fly() {
 
 In the above code, we are checking the type of the bird and then calling the appropriate method. If we want to add a new type of bird, we would have to change the code in the `fly` method. This is a violation of the Open/Closed Principle.
 
-<img
-    src="https://miro.medium.com/max/1400/1*0MtFBmm6L2WVM04qCJOZPQ.png"
-    alt="Open/closed principle"
-    width="200"
-/>
+<p align="center">
+    <img
+        src="https://miro.medium.com/max/1400/1*0MtFBmm6L2WVM04qCJOZPQ.png"
+        alt="Open/closed principle"
+        width="500"
+    />
+</p>
+
 **The Open/Closed Principle states that a class should be open for extension but closed for modification. This means that we should be able to add new functionality to the class without changing the existing code.** To add a new feature, we should ideally create a new class or method and have very little or no changes in the existing code.
 In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise happy application. We should be able to add new functionality without touching the existing code for the class. This is because whenever we modify the existing code, we are taking the risk of creating potential bugs. So we should avoid touching the tested and reliable (mostly) production code if possible.
 
