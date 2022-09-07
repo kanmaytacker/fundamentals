@@ -1,10 +1,7 @@
-package com.scaler.lld.subtyping;
+package com.scaler.lld.scaler;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.scaler.lld.scaler.Student;
-import com.scaler.lld.scaler.User;
 
 import lombok.Getter;
 import lombok.Setter;
