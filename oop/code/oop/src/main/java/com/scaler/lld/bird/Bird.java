@@ -12,5 +12,5 @@ public abstract class Bird {
     private String beakType;
     private BirdType type;
 
-    public abstract void fly();
+    public abstract void makeSound();
 }
