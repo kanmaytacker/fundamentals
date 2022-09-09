@@ -5,10 +5,10 @@ import com.scaler.lld.bird.interfaces.Swimmable;
 
 public class Runner {
     public static void main(String[] args) {
-        Flyable parrot = new Parrot(10, "Green", "Small", "Sharp", BirdType.Parrot);
+        Flyable parrot = new Parrot(10, "Green", "Small", "Sharp", BirdType.Parrot, new FlappingBehaviour());
         parrot.fly();
 
-        Flyable eagle = new Eagle(20, "Brown", "Medium", "Sharp", BirdType.Eagle);
+        Flyable eagle = new Eagle(20, "Brown", "Medium", "Sharp", BirdType.Eagle, new GlidingBehaviour());
         eagle.fly();
 
         Bird penguin = new Penguin(30, "Black", "Large", "Sharp", BirdType.Penguin);
