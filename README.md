@@ -5,5 +5,5 @@ A collection of tutorials on computer fundamentals
 
 - [DBMS](database/)
 - [Operating Systems](os/)
-- [Computer Networking](networking/)
+- [Computer Networks](networks/)
 - [Object Oriented Programming](oop/)
