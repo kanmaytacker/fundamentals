@@ -224,7 +224,13 @@ SELECT * FROM USERS WHERE age > 25;
 ```
 
 **Set operation - Subset**
-![Set operation](media/subset.png)
+<p align="center">
+    <img
+        src="../media/subset.png"
+        alt="Set operation - Subset"
+        width="500"
+    />
+</p>
 
 **SQL Query** 
 ```sql
@@ -232,7 +238,13 @@ SELECT * FROM USERS WHERE age > 25 and age < 30;
 ```
 
 **Set operation - Subset**
-![Set operation](media/subsets-and.png)
+<p align="center">
+    <img
+        src="../media/subsets-and.png"
+        alt="Set operation - Subset + AND"
+        width="500"
+    />
+</p>
 
 ### Relational Model
 
