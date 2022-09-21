@@ -213,3 +213,10 @@ This can be achieved by using the following SQL query:
 ```sql
 SELECT s.first_name, s.last_name, b.batch_name FROM students s JOIN batches b ON s.batch_id = b.id;
 ```
+
+## Practice questions
+* [Find customer reference](https://leetcode.com/problems/find-customer-referee/)
+* [Big countries](https://leetcode.com/problems/big-countries/)
+* [Not Boring Movies](https://leetcode.com/problems/not-boring-movies/)
+* [Article Views](https://leetcode.com/problems/article-views-i/)
+* [Patients with a condition](https://leetcode.com/problems/patients-with-a-condition/)
