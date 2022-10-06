@@ -13,6 +13,7 @@
       - [Index Range scan](#index-range-scan)
       - [Index seek](#index-seek)
     - [Some guidelines for optimizing MySQL queries](#some-guidelines-for-optimizing-mysql-queries)
+  - [Practice questions](#practice-questions)
 
 ## Sub-queries
 
@@ -224,3 +225,11 @@ This happens when you specify a condition in WHERE clause like searching an empl
     Instead of using ‘SELECT *’, always specify columns in the SELECT clause to improve MySQL performance. Because unnecessary columns cause additional load on the database, slowing down its performance as well whole systematic process.
 * Pagination
 * Avoid SELECT DISTINCT
+
+## Practice questions
+* [Sub-queries - I](https://leetcode.com/problems/customers-who-never-order/)
+* [Sub-queries - II](https://leetcode.com/problems/sales-person/)
+* [Sub-queries - III](https://leetcode.com/problems/consecutive-available-seats/)
+* [Sub-queries - IV](https://leetcode.com/problems/sales-analysis-ii/)
+* [Sub-queries - V](https://leetcode.com/problems/students-with-invalid-departments/)
+* [Sub-queries - VI](https://leetcode.com/problems/customer-who-visited-but-did-not-make-any-transactions/)
