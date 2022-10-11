@@ -196,10 +196,9 @@ At time t=2, the process P1 arrives. The process P1 is added to the ready queue.
 | :------ | :----------- | :--------- | :------------- |
 | P3      | 0            | 3          | 0              |
 | P2      | 1            | 8          | 8              |
-| P1      | 2            | 6          | 5              |
-| P4      | 3            | 4          | 4              |
+| P1      | 2            | 6          | 6              |
 
-At time t=3, the process P3 is completed and the process P4 arrives. The process P4 is added to the ready queue. The algorithm checks if the remaining time of the process in the CPU is less than the remaining time of the process in the ready queue. The remaining time of the processes in the ready queue is 8, 5, and 4. So, the process with the smallest remaining time is executed next. The process P4 is executed next.
+At time t=3, the process P3 is completed, and the algorithm compares the remaining time of the processes in the ready queue. The remaining time of the processes in the ready queue is 8 and 6. So, the process P1 is executed next. The process P1 will execute for 8 time units unless a new process arrives.
 
 **At time t=4**
 
@@ -207,9 +206,12 @@ At time t=3, the process P3 is completed and the process P4 arrives. The process
 | :------ | :----------- | :--------- | :------------- |
 | P2      | 1            | 8          | 8              |
 | P1      | 2            | 6          | 5              |
-| P4      | 3            | 4          | 3              |
+| P4      | 3            | 4          | 4              |
 
-**At time t=7**
+At time t=4, the process P4 arrives. The process P4 is added to the ready queue. The algorithm checks if the remaining time of the process in the CPU is less than the remaining time of the process in the ready queue. The remaining time of the process in the CPU is 5 and the remaining time of the processes in the ready queue is 8 and 4. So, the process in the CPU is preempted and the process in the ready queue is executed. The process P4 is executed for 4 time units unless a new process arrives and process P1 is added to the ready queue.
+
+
+**At time t=8**
 
 | Process | Arrival Time | Burst Time | Remaining Time |
 | :------ | :----------- | :--------- | :------------- |
@@ -217,30 +219,23 @@ At time t=3, the process P3 is completed and the process P4 arrives. The process
 | P1      | 2            | 6          | 5              |
 | P4      | 3            | 4          | 0              |
 
-At time t=7, the process P4 is completed. So, the process P1 is executed next that has the least remaining time.
+At time t=8, the process P4 is completed. The algorithm finds the process with the least remaining time. The remaining time of the processes in the ready queue is 8 and 5. So, the process P1 is executed next. The process P1 is executed for 5 time units unless a new process arrives.
 
-**At time t=8**
-
-| Process | Arrival Time | Burst Time | Remaining Time |
-| :------ | :----------- | :--------- | :------------- |
-| P2      | 1            | 8          | 8              |
-| P1      | 2            | 6          | 4              |
-
-**At time t=12**
+**At time t=13**
 | Process | Arrival Time | Burst Time | Remaining Time |
 | :------ | :----------- | :--------- | :------------- |
 | P2      | 1            | 8          | 8              |
 | P1      | 2            | 6          | 0              |
 
-At time t=12, the process P1 is completed. So, the process P2 is executed next.
+At time t=13, the process P1 is completed. So, the process P2 is executed next.
 
-**At time t=20**
+**At time t=21**
 
 | Process | Arrival Time | Burst Time | Remaining Time |
 | :------ | :----------- | :--------- | :------------- |
 | P2      | 1            | 8          | 0              |
 
-At time t=20, the process P2 is completed. So, there are no more processes to execute.
+At time t=21, the process P2 is completed. So, there are no more processes to execute.
 
 #### Advantages
 * Processes are executed faster than SJF, being the preemptive version of it.
