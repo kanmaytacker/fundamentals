@@ -15,6 +15,7 @@
     - [Shortest Remaining Time First (SRTF)](#shortest-remaining-time-first-srtf)
       - [Advantages](#advantages-1)
       - [Disadvantages](#disadvantages-1)
+  - [References](#references)
 
 
 ## What is an Operating System?
@@ -249,4 +250,7 @@ At time t=20, the process P2 is completed. So, there are no more processes to ex
 * It may still lead to starvation and requires the knowledge of process time beforehand.
 * Impossible to implement in interactive systems where the required CPU time is unknown.
 
-
+## References
+* [What is an OS?](https://www.scaler.com/topics/operating-system/what-is-operating-system/)
+* [Scheduling Algorithms](https://www.scaler.com/topics/operating-system/scheduling-algorithms-in-os/)
+* [First Come First Serve (FCFS) Scheduling Algorithm](https://www.scaler.com/topics/first-come-first-serve/)
