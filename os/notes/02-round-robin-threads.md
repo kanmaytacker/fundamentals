@@ -1,5 +1,17 @@
 # Round Robin scheduling algorithm and threads
-
+- [Round Robin scheduling algorithm and threads](#round-robin-scheduling-algorithm-and-threads)
+  - [Round Robin](#round-robin)
+    - [Algorithm](#algorithm)
+    - [Example](#example)
+    - [Advantages](#advantages)
+    - [Disadvantages](#disadvantages)
+  - [Threads](#threads)
+    - [Thread vs Process](#thread-vs-process)
+    - [Concurrency vs Parallelism](#concurrency-vs-parallelism)
+    - [Using threads in Java](#using-threads-in-java)
+      - [Number printer](#number-printer)
+  - [Assignment](#assignment)
+  - [Reading List](#reading-list)
 ## Round Robin
 
 > Round-robin (RR) is one of the algorithms employed by process and network schedulers in computing. As the term is generally used, time slices (also known as time quanta) are assigned to each process in equal portions and in circular order, handling all processes without priority (also known as cyclic executive). Round-robin scheduling is simple, easy to implement, and starvation-free. Round-robin scheduling can be applied to other scheduling problems, such as data packet scheduling in computer networks.
