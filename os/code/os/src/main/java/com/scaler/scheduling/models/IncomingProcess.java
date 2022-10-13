@@ -1,8 +1,6 @@
 package com.scaler.scheduling.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
