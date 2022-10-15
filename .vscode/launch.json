@@ -5,13 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "com.scaler.App",
+            "projectName": "os"
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["-H", "127.0.0.1", "-p", "5001"]
+            "args": [
+                "-H",
+                "127.0.0.1",
+                "-p",
+                "5001"
+            ]
         }
     ]
 }

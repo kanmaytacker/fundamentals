@@ -8,7 +8,7 @@ import lombok.Setter;
 public class IncomingProcess {
     private int id;
     private int arrivalTime;
-    private int burstTime;
+    private int burstTime; // How long the process will take to complete
 
     private int completedAt;
 
@@ -18,3 +18,5 @@ public class IncomingProcess {
         this.burstTime = burstTime;
     }
 }
+
+// List<ScheduleProcess> schedule(List<IncomingProcess>)

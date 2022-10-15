@@ -51,3 +51,10 @@ public class FirstComeFirstServe {
         return queue;
     }
 }
+
+// Side-assignment
+// Implement tie breaking in scheduling
+// If two processes have the same arrival time
+// * Check the id
+// * Also, you can check the burst time
+// One line code
