@@ -51,3 +51,4 @@ Bold problems were solved during the session.
 ## Links
 * [Awesome database learning](https://github.com/pingcap/awesome-database-learning)
 * [SQL Cheat Sheet](https://learnsql.com/blog/sql-basics-cheat-sheet/sql-basics-cheat-sheet-a4.pdf)
+* [SQL Tutorial](https://www.scaler.com/topics/sql/)
