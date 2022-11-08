@@ -11,6 +11,7 @@ def main(host: str, port: int) -> None:
 
     # Listen for incoming connections
     sock.listen()
+    print(f"Server is listening on port {port}")
 
     # Accept connections
     conn, addr = sock.accept()
