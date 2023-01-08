@@ -321,7 +321,7 @@ HAVING AVG(iq) >= 100;
 
 ## Problems
 1. [Simple - I](https://leetcode.com/problems/big-countries/)
-2. [Simple - II](https://leetcode.com/problems/find-customer-referee//)
+2. [Simple - II](https://leetcode.com/problems/find-customer-referee/)
 3. [Joins - I](https://leetcode.com/problems/employees-earning-more-than-their-managers/)
 4. [Joins - II](https://leetcode.com/problems/combine-two-tables/)
 5. [Join - III](https://leetcode.com/problems/delete-duplicate-emails/)
