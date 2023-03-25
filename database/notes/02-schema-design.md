@@ -3,9 +3,17 @@
 - [Schema Design: A case study](#schema-design-a-case-study)
   - [Key Terms](#key-terms)
     - [Schema](#schema)
-  - [SQL data types](#sql-data-types)
-    - [String types](#string-types)
-    - [Numeric types](#numeric-types)
+    - [Relational DBMS](#relational-dbms)
+      - [Relevance to DBMS](#relevance-to-dbms)
+    - [Relational Model](#relational-model)
+      - [Properties](#properties)
+    - [Keys](#keys)
+      - [Super keys](#super-keys)
+      - [Candidate keys](#candidate-keys)
+      - [Primary Keys](#primary-keys)
+      - [Composite Keys](#composite-keys)
+      - [Foreign Keys](#foreign-keys)
+  - [Some queries to get you started](#some-queries-to-get-you-started)
   - [Schema design](#schema-design)
     - [Case study: Requirements](#case-study-requirements)
     - [Initial design](#initial-design)
@@ -14,7 +22,6 @@
       - [Caveat 2: Relations with attributes](#caveat-2-relations-with-attributes)
       - [Recap](#recap)
     - [Final Design](#final-design)
-  - [Reading list](#reading-list)
 
 
 ## Key Terms
@@ -24,32 +31,186 @@
 > In a relational database, the schema defines the tables, fields, relationships, views, indexes, packages, procedures, functions, queues, triggers, types, sequences, materialized views, synonyms, database links, directories, XML schemas, and other elements
 
 
-## SQL data types
+### Relational DBMS
 
-MySQL supports SQL data types in several categories: numeric types, date and time types, string (character and byte) types, spatial types, and the JSON data type. The following are the string and numeric types:
+Using a database in an application leads to extra or boilerplate code. You might see the same piece of code across applications. To reduce this duplication and standardise the code, various data models were proposed.
 
-### String types
+The most popular being the relational model.
+> The relational model (RM) is an approach to managing data using a structure and language consistent with first-order predicate logic, where all data is represented in terms of tuples, grouped into relations
 
-| Type | Description | Size | Range | Example |
-| --- | --- | --- | --- | --- |
-| `CHAR(n)` | Fixed-length string | 0-255 | 0-65,535 | `CHAR(10)` |
-| `VARCHAR(n)` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
-| `TINYTEXT` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
-| `TEXT` | Variable-length string | 0-65,535 | 0-4,294,967,295 | `TEXT` |
-| `MEDIUMTEXT` | Variable-length string | 0-16,777,215 | 0-4,294,967,295 | `MEDIUMTEXT` |
-| `LONGTEXT` | Variable-length string | 0-4,294,967,295 | 0-4,294,967,295 | `LONGTEXT` |
+> This relational model has three key points
+> * Store database in simple data structures (relations).
+> * Access data through high-level language.
+> * Physical storage left up to implementation.
 
-### Numeric types
+#### Relevance to DBMS
 
-| Type | Description | Size | Range | Example |
-| --- | --- | --- | --- | --- |
-| `TINYINT` | Integer | 1 byte | -128 to 127 | `TINYINT` |
-| `SMALLINT` | Integer | 2 bytes | -32,768 to 32,767 | `SMALLINT` |
-| `MEDIUMINT` | Integer | 3 bytes | -8,388,608 to 8,388,607 | `MEDIUMINT` |
-| `INT` | Integer | 4 bytes | -2,147,483,648 to 2,147,483,647 | `INT` |
-| `BIGINT` | Integer | 8 bytes | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `BIGINT` |
-| `DECIMAL` | Fixed-point number | 0-65 | -10^38+1 to 10^38-1 | `DECIMAL(10, 2)` |
-| `FLOAT` | Floating-point number | 4 bytes | -3.402823466E+38 to -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38 | `FLOAT` |
+**SQL Query** 
+```sql
+SELECT * FROM USERS WHERE age > 25;
+```
+
+**Set operation - Subset**
+<p align="center">
+    <img
+        src="../media/subset.png"
+        alt="Set operation - Subset"
+        width="500"
+    />
+</p>
+
+**SQL Query** 
+```sql
+SELECT * FROM USERS WHERE age > 25 and age < 30;
+```
+
+**Set operation - Subset**
+<p align="center">
+    <img
+        src="../media/subsets-and.png"
+        alt="Set operation - Subset + AND"
+        width="500"
+    />
+</p>
+
+### Relational Model
+
+Main features of the relational model are:
+* **Relations** - Tables -Represent data as a collection of relations or tables
+* **Attributes** - Columns - Each entry in a relation can describe multiple values that are grouped as an attribute 
+* **Tuples** - Rows - Represent individual data points across multiple attributes
+
+
+![Relational Database](https://upload.wikimedia.org/wikipedia/commons/8/8d/Relational_model_concepts.png)
+
+* **Degree** - Number of attributes in a relation 
+  * > Student (name, age, address, phone, email)
+  * Degree - 5
+* **Cardinality** - Number of tuples
+  * Look at our users file above
+  * It has three rows and hence **cardinality is 3**
+* **NULL** - For a given tuple, the attribute is undefined.
+
+#### Properties
+* **Uniqueness**
+  * Each tuple is unique
+  * Each attribute is unique
+* **Unordered**
+  * Tuples are not ordered
+  * Attributes are not ordered
+* **Uniform data type** - Every value in a column is of the same data type
+* **Atomicity** -  Each attribute in each tuple within a relation should consist of a single value and not allow multivalued structures of the kind
+
+--- 
+### Keys
+Keys are used to 
+* uniquely identify a tuple in a relation.
+* describe relationships between relations.
+
+How can you uniquely identify a student in the students relation?
+> Student (name, age, address, phone, email)
+
+* Name
+  * A name might not be unique
+* Phone or Email
+  * Each student will have a unique phone or email address
+
+#### Super keys
+
+A set of attributes that uniquely identify a tuple in a relation.
+
+For our student relation `Student (name, age, address, phone, email)`, following are some super keys:
+* `{id, name}`
+* `{id, name, phone}`
+* `{id, name, email}`
+* `{id, name, email, phone}`
+* `{id, name, email, phone, age, address}`
+* `{id}`
+
+#### Candidate keys
+
+A **minimal** set of attributes that uniquely identify a tuple in a relation.
+
+For example `{id, name, email, phone}` is a super key but is it a candidate key?
+
+**No**, since you can remove `phone` or any other attribute set, but it will still uniquely identify a tuple.
+
+A set of candidate keys for our student relation
+* id
+* name
+* email
+
+#### Primary Keys
+> a specific choice of a minimal set of attributes (columns) that uniquely specify a tuple (row) in a relation (table)
+
+> a primary key is a choice of candidate key (a minimal superkey); any other candidate key is an alternate key.
+
+**Each relation can only have one primary key**
+
+#### Composite Keys
+Sometime you want to use multiple attributes to uniquely identify a tuple. For example, you might want to use a combination of name and phone number to uniquely identify a student.
+
+Composite keys are used in mapping tables. For instance, you might want to have a relation for student feedback.
+You could use `student_id` and `batch_id` for uniquely identifying a tuple.
+
+#### Foreign Keys
+> A Foreign Key is a database key that is used to link two tables together
+> A foreign key is a set of attributes in a table that refers to the primary key of another table
+
+Imagine adding a batch to a student.
+You could add all the column for a batch in the student relation.
+
+| Name | Email | Phone | Age | Address | Batch Name | Batch | Start Date | Type |
+| ---- | ----- | ----- | --- | ------- | ---------- | ----- | ---------- | ---- |
+
+Problem with this solution
+* Duplication - All the columns from the batch relation are duplicated
+* Integrity - What if the original relation is duplicated?
+
+Can we just reference the original relation?
+| Name | Email | Phone | Age | Address | Batch Id |
+| ---- | ----- | ----- | --- | ------- | -------- |
+
+## Some queries to get you started
+Create the students relation
+```sql
+CREATE TABLE `students` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `age` int DEFAULT NULL,
+  `phone` int DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`);
+)
+```
+
+Create the mentors relation
+```sql
+CREATE TABLE `mentors` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `age` int DEFAULT NULL,
+  `phone` int DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
+Create the batches relation
+```sql
+CREATE TABLE `batches` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `start_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` varchar(255) NOT NULL,
+  `mentor_id` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `mentor_id` (`mentor_id`),
+  CONSTRAINT `batches_ibfk_1` FOREIGN KEY (`mentor_id`) REFERENCES `mentors` (`id`)
+);
+```
 
 ## Schema design
 
@@ -432,8 +593,3 @@ classDiagram
     Batches "M" -- "1" Instructor
     Classes "M" -- "1" Instructor
 ```
-
-## Reading list
-* [Problems with floats](https://dev.mysql.com/doc/refman/8.0/en/problems-with-float.html)
-* [Char and Varchar](https://dev.mysql.com/doc/refman/8.0/en/char.html)
-* [IEEE 754 - Floating Point Arithmetic](https://en.wikipedia.org/wiki/IEEE_754)
