@@ -3,9 +3,12 @@
 - [Schema Design: A case study](#schema-design-a-case-study)
   - [Key Terms](#key-terms)
     - [Schema](#schema)
-    - [Relational DBMS](#relational-dbms)
-      - [Relevance to DBMS](#relevance-to-dbms)
     - [Relational Model](#relational-model)
+    - [Primary Key](#primary-key)
+    - [Foreign Key](#foreign-key)
+  - [Relational DBMS](#relational-dbms)
+      - [Relevance to DBMS](#relevance-to-dbms)
+    - [Relational Model](#relational-model-1)
       - [Properties](#properties)
     - [Keys](#keys)
       - [Super keys](#super-keys)
@@ -30,8 +33,16 @@
 
 > In a relational database, the schema defines the tables, fields, relationships, views, indexes, packages, procedures, functions, queues, triggers, types, sequences, materialized views, synonyms, database links, directories, XML schemas, and other elements
 
+### Relational Model
+> The relational model (RM) is an approach to managing data using a structure and language consistent with first-order predicate logic, where all data is represented in terms of tuples, grouped into relations
 
-### Relational DBMS
+### Primary Key
+> a specific choice of a minimal set of attributes (columns) that uniquely specify a tuple (row) in a relation (table)
+
+### Foreign Key
+> A foreign key is a set of attributes in a table that refers to the primary key of another table
+
+## Relational DBMS
 
 Using a database in an application leads to extra or boilerplate code. You might see the same piece of code across applications. To reduce this duplication and standardise the code, various data models were proposed.
 
