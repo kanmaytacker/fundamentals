@@ -310,7 +310,7 @@ For example `{id, name, email, phone}` is a super key but is it a candidate key?
 
 A set of candidate keys for our student relation
 * id
-* name
+* phone
 * email
 
 #### Primary Keys
