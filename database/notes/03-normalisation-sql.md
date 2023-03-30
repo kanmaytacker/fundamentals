@@ -4,6 +4,9 @@
   - [Key Terms](#key-terms)
     - [Functional Dependencies](#functional-dependencies)
     - [Data Normalisation](#data-normalisation)
+  - [SQL data types](#sql-data-types)
+    - [String types](#string-types)
+    - [Numeric types](#numeric-types)
   - [Data Anomalies](#data-anomalies)
     - [Insertion Anomalies](#insertion-anomalies)
     - [Deletion Anomalies](#deletion-anomalies)
@@ -17,19 +20,6 @@
     - [2NF](#2nf)
     - [3NF](#3nf)
     - [Boyce-Codd Normal Form (BCNF)](#boyce-codd-normal-form-bcnf)
-  - [SQL data types](#sql-data-types)
-    - [String types](#string-types)
-    - [Numeric types](#numeric-types)
-  - [SQL Commands](#sql-commands)
-    - [DDL](#ddl)
-    - [DML](#dml)
-    - [DCL](#dcl)
-    - [TCL](#tcl)
-  - [CRUD with SQL](#crud-with-sql)
-    - [Create rows](#create-rows)
-      - [Examples](#examples)
-    - [Read rows](#read-rows)
-      - [Examples](#examples-1)
   
 ## Key Terms
 
@@ -37,6 +27,35 @@
 > Functional Dependency is when one attribute determines another attribute in a DBMS
 ### Data Normalisation
 > the process of splitting relations into well-structured relations that allow users to insert, delete, and update tuples without introducing database inconsistencies
+
+## SQL data types
+
+MySQL supports SQL data types in several categories: numeric types, date and time types, string (character and byte) types, spatial types, and the JSON data type. The following are the string and numeric types:
+
+### String types
+
+| Type | Description | Size | Range | Example |
+| --- | --- | --- | --- | --- |
+| `CHAR(n)` | Fixed-length string | 0-255 | 0-65,535 | `CHAR(10)` |
+| `VARCHAR(n)` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
+| `TINYTEXT` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
+| `TEXT` | Variable-length string | 0-65,535 | 0-4,294,967,295 | `TEXT` |
+| `MEDIUMTEXT` | Variable-length string | 0-16,777,215 | 0-4,294,967,295 | `MEDIUMTEXT` |
+| `LONGTEXT` | Variable-length string | 0-4,294,967,295 | 0-4,294,967,295 | `LONGTEXT` |
+
+### Numeric types
+
+| Type | Description | Size | Range | Example |
+| --- | --- | --- | --- | --- |
+| `TINYINT` | Integer | 1 byte | -128 to 127 | `TINYINT` |
+| `SMALLINT` | Integer | 2 bytes | -32,768 to 32,767 | `SMALLINT` |
+| `MEDIUMINT` | Integer | 3 bytes | -8,388,608 to 8,388,607 | `MEDIUMINT` |
+| `INT` | Integer | 4 bytes | -2,147,483,648 to 2,147,483,647 | `INT` |
+| `BIGINT` | Integer | 8 bytes | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `BIGINT` |
+| `DECIMAL` | Fixed-point number | 0-65 | -10^38+1 to 10^38-1 | `DECIMAL(10, 2)` |
+| `FLOAT` | Floating-point number | 4 bytes | -3.402823466E+38 to -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38 | `FLOAT` |
+
+---
 
 ## Data Anomalies
 
@@ -323,126 +342,3 @@ erDiagram
     STUDENT ||--|{ BATCH : joins
     STUDENT ||--|{ PHONE_NUMBER : has
 ```
-
-## SQL data types
-
-MySQL supports SQL data types in several categories: numeric types, date and time types, string (character and byte) types, spatial types, and the JSON data type. The following are the string and numeric types:
-
-### String types
-
-| Type | Description | Size | Range | Example |
-| --- | --- | --- | --- | --- |
-| `CHAR(n)` | Fixed-length string | 0-255 | 0-65,535 | `CHAR(10)` |
-| `VARCHAR(n)` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
-| `TINYTEXT` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
-| `TEXT` | Variable-length string | 0-65,535 | 0-4,294,967,295 | `TEXT` |
-| `MEDIUMTEXT` | Variable-length string | 0-16,777,215 | 0-4,294,967,295 | `MEDIUMTEXT` |
-| `LONGTEXT` | Variable-length string | 0-4,294,967,295 | 0-4,294,967,295 | `LONGTEXT` |
-
-### Numeric types
-
-| Type | Description | Size | Range | Example |
-| --- | --- | --- | --- | --- |
-| `TINYINT` | Integer | 1 byte | -128 to 127 | `TINYINT` |
-| `SMALLINT` | Integer | 2 bytes | -32,768 to 32,767 | `SMALLINT` |
-| `MEDIUMINT` | Integer | 3 bytes | -8,388,608 to 8,388,607 | `MEDIUMINT` |
-| `INT` | Integer | 4 bytes | -2,147,483,648 to 2,147,483,647 | `INT` |
-| `BIGINT` | Integer | 8 bytes | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `BIGINT` |
-| `DECIMAL` | Fixed-point number | 0-65 | -10^38+1 to 10^38-1 | `DECIMAL(10, 2)` |
-| `FLOAT` | Floating-point number | 4 bytes | -3.402823466E+38 to -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38 | `FLOAT` |
-
-## SQL Commands
-
-![SQL](https://i.stack.imgur.com/7uUaJ.png)
-
-### DDL
-
-DDL is short name of Data Definition Language, which deals with database schemas and descriptions, of how the data should reside in the database.
-
-* **CREATE** – to create database and its objects like (table, index, views, store procedure, function and triggers).
-* **ALTER** – alters the structure of the existing database.
-* **DROP** – delete objects from the database.
-* **TRUNCATE** – remove all records from a table; also, all spaces allocated for the records are removed.
-* **COMMENT** – add comments to the data dictionary.
-* **RENAME** – rename an object.
-
-### DML
-
-DML is short name of Data Manipulation Language which deals with data manipulation, and includes most common SQL statements such SELECT, INSERT, UPDATE, DELETE etc, and it is used to store, modify, retrieve, delete and update data in database.
-
-* **SELECT** – retrieve data from one or more tables.
-* **INSERT** – insert data into a table.
-* **UPDATE** – updates existing data within a table.
-* **DELETE** – delete all records from a table.
-* **MERGE** – UPSERT operation (insert or update)
-* **CALL** – call a PL/SQL or Java subprogram.
-* **EXPLAIN PLAN** – interpretation of the data access path.
-* **LOCK TABLE** – concurrency control.
-
-### DCL
-
-DCL is short name of Data Control Language which includes commands such as GRANT, and mostly concerned with rights, permissions and other controls of the database system.
-
-* **GRANT** – allow users access privileges to database.
-* **REVOKE** – withdraw users access privileges given by using the GRANT command.
-
-### TCL
-
-TCL is short name of Transaction Control Language which deals with transaction within a database.
-
-* **COMMIT** – commits a transaction.
-* **ROLLBACK** – rollback a transaction in case of any error occurs.
-* **SAVEPOINT** – a point inside a transaction that allows rollback state to what it was at the time of the savepoint.
-* **SET TRANSACTION** – specify characteristics for the transaction.
-
-## CRUD with SQL
-
-### Create rows
-
-**Keyword**: `INSERT`
-**Syntax**: `INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...)`
-
-#### Examples
-
-1. Insert a row with all columns
-```sql
-    INSERT INTO students VALUES (1, 'Tantia', 'Tope', 't@t.com', '1234567890', 1);
-```
-
-2. Insert a row with some columns
-```sql
-    INSERT INTO students (first_name, last_name) VALUES ('Tantia', 'Tope');
-```
-### Read rows
-
-**Keyword**: `SELECT`
-**Syntax**: `SELECT column1, column2, ... FROM table_name WHERE condition ORDER BY column1, column2, ... ASC/DESC LIMIT #`
-
-#### Examples
-
-1. Get all rows
-
-    ```sql
-    SELECT * FROM students;
-    ```
-
-2. Get certain fields from all rows
-
-    ```sql
-    SELECT first_name, last_name FROM students;
-    ```
-3. Filter rows by condition
-    
-    ```sql
-    SELECT * FROM students WHERE first_name = 'Tantia';
-    ```
-4. Order rows by column
-    
-    ```sql
-    SELECT * FROM students ORDER BY first_name ASC;
-    ```
-5. Limit number of rows
-    
-    ```sql
-    SELECT * FROM students LIMIT 10;
-    ```
