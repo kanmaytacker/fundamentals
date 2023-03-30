@@ -17,6 +17,9 @@
     - [2NF](#2nf)
     - [3NF](#3nf)
     - [Boyce-Codd Normal Form (BCNF)](#boyce-codd-normal-form-bcnf)
+  - [SQL data types](#sql-data-types)
+    - [String types](#string-types)
+    - [Numeric types](#numeric-types)
   - [SQL Commands](#sql-commands)
     - [DDL](#ddl)
     - [DML](#dml)
@@ -320,6 +323,33 @@ erDiagram
     STUDENT ||--|{ BATCH : joins
     STUDENT ||--|{ PHONE_NUMBER : has
 ```
+
+## SQL data types
+
+MySQL supports SQL data types in several categories: numeric types, date and time types, string (character and byte) types, spatial types, and the JSON data type. The following are the string and numeric types:
+
+### String types
+
+| Type | Description | Size | Range | Example |
+| --- | --- | --- | --- | --- |
+| `CHAR(n)` | Fixed-length string | 0-255 | 0-65,535 | `CHAR(10)` |
+| `VARCHAR(n)` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
+| `TINYTEXT` | Variable-length string | 0-255 | 0-65,535 | `VARCHAR(10)` |
+| `TEXT` | Variable-length string | 0-65,535 | 0-4,294,967,295 | `TEXT` |
+| `MEDIUMTEXT` | Variable-length string | 0-16,777,215 | 0-4,294,967,295 | `MEDIUMTEXT` |
+| `LONGTEXT` | Variable-length string | 0-4,294,967,295 | 0-4,294,967,295 | `LONGTEXT` |
+
+### Numeric types
+
+| Type | Description | Size | Range | Example |
+| --- | --- | --- | --- | --- |
+| `TINYINT` | Integer | 1 byte | -128 to 127 | `TINYINT` |
+| `SMALLINT` | Integer | 2 bytes | -32,768 to 32,767 | `SMALLINT` |
+| `MEDIUMINT` | Integer | 3 bytes | -8,388,608 to 8,388,607 | `MEDIUMINT` |
+| `INT` | Integer | 4 bytes | -2,147,483,648 to 2,147,483,647 | `INT` |
+| `BIGINT` | Integer | 8 bytes | -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 | `BIGINT` |
+| `DECIMAL` | Fixed-point number | 0-65 | -10^38+1 to 10^38-1 | `DECIMAL(10, 2)` |
+| `FLOAT` | Floating-point number | 4 bytes | -3.402823466E+38 to -1.175494351E-38, 0, and 1.175494351E-38 to 3.402823466E+38 | `FLOAT` |
 
 ## SQL Commands
 
