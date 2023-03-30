@@ -20,6 +20,7 @@
     - [2NF](#2nf)
     - [3NF](#3nf)
     - [Boyce-Codd Normal Form (BCNF)](#boyce-codd-normal-form-bcnf)
+  - [Reading List](#reading-list)
   
 ## Key Terms
 
@@ -342,3 +343,10 @@ erDiagram
     STUDENT ||--|{ BATCH : joins
     STUDENT ||--|{ PHONE_NUMBER : has
 ```
+
+## Reading List
+* [Normalisation](https://www.scaler.com/topics/dbms/normalization-in-dbms/)
+* [CHAR and VARCHAR](https://dev.mysql.com/doc/refman/8.0/en/char.html)
+* [CHAR vs VARCHAR vs TEXT](https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/)
+* [Why not to use floating points](https://dev.mysql.com/doc/refman/8.0/en/problems-with-float.html)
+* [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754)
