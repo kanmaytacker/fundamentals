@@ -131,3 +131,8 @@ HAVING avg_iq > 130;
      ```sql
      DELETE FROM students WHERE id IN (1, 2, 3);
      ```
+| ID | NAME | PHONE | EMAIL |
+|----|------|-------|-------|
+| 1  | Joe Bloggs | 123456789 | joe@bloggs.in |
+
+```SELECT ID, IFNULL(PHONE, IFNULL(EMAIL, IFNULL(NAME, 'NO CONTACT INFO'))) AS CONTACT_INFO FROM students;```
