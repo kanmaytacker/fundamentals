@@ -1,4 +1,13 @@
 # Views and window functions
+- [Views and window functions](#views-and-window-functions)
+  - [Views](#views)
+    - [CRUD operations](#crud-operations)
+  - [Window Functions](#window-functions)
+    - [Syntax](#syntax)
+    - [Rank function](#rank-function)
+    - [Row Number function](#row-number-function)
+    - [Other window functions](#other-window-functions)
+  - [Practice problems](#practice-problems)
 
 ## Views
 
