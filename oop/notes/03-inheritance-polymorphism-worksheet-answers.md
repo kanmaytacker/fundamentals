@@ -213,3 +213,35 @@ public class Student extends User {
     }
 }
 ```
+
+## Email Sender to both students and mentors
+
+```java
+public class EmailSender {
+
+    public void sendEmail(List<User> users) {
+        for (User user : users) {
+            System.out.println("Sending email to " + user.email);
+        }
+    }
+}
+```
+
+## Interface for sending notifications
+
+
+```java
+public interface NotificationSender {
+    void sendNotification(List<User> users);
+}
+```
+
+```java
+public class EmailSender implements NotificationSender {
+
+    @Override
+    public void sendNotification(List<User> users) {
+        System.out.println("Sending email notification");
+    }
+}
+```
