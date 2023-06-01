@@ -1,22 +1,25 @@
-# SOLID principles
-- [SOLID principles](#solid-principles)
+# Reflection and SOLID principles - SRP and OCP
+- [Reflection and SOLID principles - SRP and OCP](#reflection-and-solid-principles---srp-and-ocp)
   - [Key terms](#key-terms)
-    - [SOLID principles](#solid-principles-1)
+    - [Reflection](#reflection)
+    - [SOLID principles](#solid-principles)
     - [Single responsibility principle](#single-responsibility-principle)
     - [Open/closed principle](#openclosed-principle)
+  - [Reflection](#reflection-1)
+    - [Why not to use reflection?](#why-not-to-use-reflection)
   - [Single responsibility principle](#single-responsibility-principle-1)
     - [Case study - Design a bird](#case-study---design-a-bird)
     - [Reasons to follow SRP](#reasons-to-follow-srp)
     - [How/Where to spot violations of SRP?](#howwhere-to-spot-violations-of-srp)
     - [Side-assignment alert](#side-assignment-alert)
   - [Open/closed principle](#openclosed-principle-1)
-    - [Abstract classes and interfaces](#abstract-classes-and-interfaces)
-      - [Interface](#interface)
-    - [When to use abstract classes and interfaces?](#when-to-use-abstract-classes-and-interfaces)
     - [Fixing OCP violation in the `Bird` class](#fixing-ocp-violation-in-the-bird-class)
   - [Reading List](#reading-list)
 
 ## Key terms
+### Reflection
+> Reflection is the ability of a computer program to examine, introspect, and modify its own structure and behavior at runtime.
+
 ### SOLID principles
 > SOLID is a mnemonic acronym for five design principles intended to make object-oriented designs more understandable, flexible, and maintainable. 
 
@@ -25,7 +28,98 @@
 
 ### Open/closed principle
 > Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.
+---
+## Reflection
 
+There are a few use cases where we need to construct objects without knowing their class at compile time. For example, we might want to create a new object based on the user input. In such cases, we can use reflection to create objects at runtime. Some use cases of reflection are:
+* Creating new objects using their class name
+* Getting the class name of an object
+* Identifying the fields and methods of a class
+* Identifying the annotations of a class
+
+Let us take an example of the following class `Student`:
+
+```java
+public class Student {
+    private String name;
+    private int age;
+    private String rollNumber;
+
+    public Student(String name, int age, String rollNumber) {
+        this.name = name;
+        this.age = age;
+        this.rollNumber = rollNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Deprecated
+    public String getRollNumber() {
+        return rollNumber;
+    }
+}
+```
+
+We can create an object of the `Student` class and then use reflection to get the class name and the fields of the class.
+
+```java
+Student student = new Student("Tantia Tope", 25, "1234567890");
+Field[] fields = student.getClass().getDeclaredFields();
+```
+In the above code, we are using the `getClass()` method to get the class of the object and then using the `getDeclaredFields()` method to get the fields of the class.
+
+The `getDeclaredFields()` method returns an array of `Field` objects. The `Field` class is a part of the `java.lang.reflect` package. The `Field` class provides methods to get the name, type, and annotations of the field.
+
+```java
+for (Field field : fields) {
+    System.out.println("Field name: " + field.getName());
+    System.out.println("Field type: " + field.getType());
+}
+```
+
+You can even get an instance of the class the reflection API.
+
+```java
+Class<?> studentClass = Class.forName("com.scaler.lld.rescaler.Student");
+```
+
+The `forName()` method of the `Class` class returns an instance of the `Class` class. The `forName()` method takes the fully qualified name of the class as an argument. The `forName()` method throws a `ClassNotFoundException` if the class is not found.
+
+Similar to the `getDeclaredFields()` method, the `Class` class also provides methods to get the methods and annotations of the class.
+
+```java
+Method[] methods = studentClass.getDeclaredMethods();
+for (Method method : methods) {
+    System.out.println("Method name: " + method.getName());
+    System.out.println("Method return type: " + method.getReturnType());
+}
+```
+
+The `getDeclaredMethods()` method returns an array of `Method` objects. The `Method` class is a part of the `java.lang.reflect` package. The `Method` class provides methods to get the name, return type, and annotations of the method.
+
+```java
+Annotation[] annotations = studentClass.getDeclaredAnnotations();
+for (Annotation annotation : annotations) {
+    System.out.println("Annotation name: " + annotation.annotationType());
+}
+```
+
+### Why not to use reflection?
+
+Reflection is a very powerful tool, but it should be used with caution.
+1. Reflection is a very slow process and should be avoided in performance-critical applications.
+2. Reflection is also not type-safe. If you are using reflection to access a field or method, you will not get any compile-time error if the field or method does not exist. You will get a runtime error instead.
+3. Reflection also makes the code difficult to understand and debug.
+4. Reflection can also be used to access private fields and methods. This can lead to security issues. It can also be used to modify the behavior of a class at runtime. This can lead to unexpected behavior.
+5. It is brittle. If you change the name of a field or method, you will have to change the code that uses reflection to access that field or method.
+
+---
 ## Single responsibility principle
 
 > When designing our classes, we should aim to put related features together, so whenever they tend to change they change for the same reason. And we should try to separate features if they will change for different reasons.
@@ -177,49 +271,6 @@ In doing so, we stop ourselves from modifying existing code and causing potentia
 
 * A module will be said to be open if it is still available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.
 * A module will be said to be closed if [it] is available for use by other modules. This assumes that the module has been given a well-defined, stable description (the interface in the sense of information hiding).
-
-### Abstract classes and interfaces
-
-An abstract class is nothing but a class that is declared using the abstract keyword. It also allows us to declare method signatures using the abstract keyword (abstract method) and forces its subclasses to implement all the declared methods. Suppose if a class has a method that is abstract, then the class itself must be abstract.
-
-Abstract classes have no restrictions on field and method modifiers, while in an interface, all are public by default. We can have instance and static initialization blocks in an abstract class, whereas we can never have them in the interface. Abstract classes may also have constructors which will get executed during the child object's instantiation.
-
-Abstract classes can be defined using the `abstract` keyword. An abstract class can have abstract methods and non-abstract methods. An abstract method is a method that is declared without an implementation. It is a method that is declared using the `abstract` keyword and does not have a body. An abstract class can have a constructor and it gets executed when an object of the child class is created. An abstract class can have instance variables, static variables, instance methods, static methods, and abstract methods.
-
-```java
-public abstract class Animal {
-    private String name;
-    private int age;
-
-    public Animal(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public abstract void makeSound();
-
-    public void eat() {
-        System.out.println("Eating...");
-    }
-}
-```
-
-#### Interface
-
-An Interface in Java programming language is defined as an abstract type used to specify the behavior of a class. An interface in Java is a blueprint of a class. A Java interface contains static constants and abstract methods. The interface in Java is a mechanism to achieve abstraction.
-
-You can think of an interface as a completely abstract class that can only contain abstract methods. An interface is similar to a class, in that it contains methods and variables, but the methods declared in an interface are by default abstract (only method signature, no body). Interfaces cannot be used to create objects (in the example above, it is not possible to create an "Animal" object). An interface is not inherited by a class; it must be implemented by a class.
-
-```java
-public interface Animal {
-    public void makeSound();
-}
-```
-
-### When to use abstract classes and interfaces?
-* If multiple classes have common functionalities, we would like to use inheritance to avoid code duplication and also have fixed contracts so that the subclasses are forced to implement the common functionalities.
-* If the common classes have common attributes, consider using abstract classes since they can have instance variables.
-* If the common classes have common methods, consider using interfaces since they can have only abstract methods. However, the implementation of the methods can be different in the subclasses. Interfaces are also useful when we want to have multiple inheritance.
 
 ### Fixing OCP violation in the `Bird` class
 
