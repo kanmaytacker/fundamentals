@@ -11,7 +11,6 @@
     - [Creating new interfaces](#creating-new-interfaces)
     - [Summary](#summary)
   - [Interface Segregation Principle](#interface-segregation-principle-1)
-  - [Precise application design and correct abstraction is the key behind the Interface Segregation Principle. Though it'll take more time and effort in the design phase of an application and might increase the code complexity, in the end, we get a flexible code.](#precise-application-design-and-correct-abstraction-is-the-key-behind-the-interface-segregation-principle-though-itll-take-more-time-and-effort-in-the-design-phase-of-an-application-and-might-increase-the-code-complexity-in-the-end-we-get-a-flexible-code)
   - [Reading list](#reading-list)
 
 ## Key Terms
@@ -299,6 +298,7 @@ Along with the `fly()` method, we also have the `makeSound()` method in the `Fly
 Larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them. If a class exposes so many members that those members can be broken down into groups that serve different clients that don’t use members from the other groups, you should think about exposing those member groups as separate interfaces.
 
 Precise application design and correct abstraction is the key behind the Interface Segregation Principle. Though it'll take more time and effort in the design phase of an application and might increase the code complexity, in the end, we get a flexible code.
+
 ---
 
 ## Reading list
