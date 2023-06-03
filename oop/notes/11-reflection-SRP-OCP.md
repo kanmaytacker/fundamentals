@@ -12,8 +12,6 @@
     - [Reasons to follow SRP](#reasons-to-follow-srp)
     - [How/Where to spot violations of SRP?](#howwhere-to-spot-violations-of-srp)
     - [Side-assignment alert](#side-assignment-alert)
-  - [Open/closed principle](#openclosed-principle-1)
-    - [Fixing OCP violation in the `Bird` class](#fixing-ocp-violation-in-the-bird-class)
   - [Reading List](#reading-list)
 
 ## Key terms
@@ -240,66 +238,6 @@ The above method is doing much more than the name suggests. It is connecting to 
 * Refactor the code to follow SRP.
 
 --- 
-
-## Open/closed principle
-We identified a bunch of problems with the `Bird` class. Let us see the fly method again to spot another problem.
-
-```java
-public void fly() {
-    if (type.equals("eagle")) {
-        flyLikeEagle();
-    } else if (type.equals("penguin")) {
-        flyLikePenguin();
-    } else if (type.equals("parrot")) {
-        flyLikeParrot();
-    }
-}
-```
-
-In the above code, we are checking the type of the bird and then calling the appropriate method. If we want to add a new type of bird, we would have to change the code in the `fly` method. This is a violation of the Open/Closed Principle.
-
-<p align="center">
-    <img
-        src="https://miro.medium.com/max/1400/1*0MtFBmm6L2WVM04qCJOZPQ.png"
-        alt="Open/closed principle"
-        width="500"
-    />
-</p>
-
-**The Open/Closed Principle states that a class should be open for extension but closed for modification. This means that we should be able to add new functionality to the class without changing the existing code.** To add a new feature, we should ideally create a new class or method and have very little or no changes in the existing code.
-In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise happy application. We should be able to add new functionality without touching the existing code for the class. This is because whenever we modify the existing code, we are taking the risk of creating potential bugs. So we should avoid touching the tested and reliable (mostly) production code if possible.
-
-* A module will be said to be open if it is still available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.
-* A module will be said to be closed if [it] is available for use by other modules. This assumes that the module has been given a well-defined, stable description (the interface in the sense of information hiding).
-
-### Fixing OCP violation in the `Bird` class
-
-Now that we have learnt about abstract classes and interfaces, let us fix the SRP and OCP violation in the `Bird` class. In order to fix the SRP violations, we would consider having a parent class `Bird` and child classes `Eagle`, `Penguin`, and `Parrot`. Since, different birds have the same attributes and behaviours, we would want to use classes. An instance of the `Bird` class does not make sense, hence we would use an abstract class. We can't use an interface since we would want to have instance variables. We would also want to have a fixed contract for the subclasses to implement the common functionalities. Hence, we would use an abstract class.
-Now, our `Bird` class would look like this.
-
-```mermaid
-classDiagram
-    Bird <|-- Eagle
-    Bird <|-- Penguin
-    Bird <|-- Parrot
-    class Bird{
-        +weight: int
-        +colour: string
-        +type: string
-        +size: string
-        +beakType: string
-        +fly()
-    }
-    class Eagle{
-        +fly()
-    }
-    class Penguin{
-        +fly()
-    }
-    class Parrot{
-        +fly()
-    }
-```
 
 ## Reading List
 * [SOLID vs CUPID vs GRASP](https://www.boldare.com/blog/solid-cupid-grasp-principles-object-oriented-design/#what-is-solid-and-why-is-it-more-than-just-an-acronym?-solid-vs.-cupid---is-the-new-always-better?)

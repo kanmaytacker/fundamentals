@@ -9,6 +9,67 @@
 
 ### Dependency Inversion Principle
 > Depend upon abstractions. Do not depend upon concrete classes.
+---
+
+## Open/closed principle
+We identified a bunch of problems with the `Bird` class. Let us see the fly method again to spot another problem.
+
+```java
+public void fly() {
+    if (type.equals("eagle")) {
+        flyLikeEagle();
+    } else if (type.equals("penguin")) {
+        flyLikePenguin();
+    } else if (type.equals("parrot")) {
+        flyLikeParrot();
+    }
+}
+```
+
+In the above code, we are checking the type of the bird and then calling the appropriate method. If we want to add a new type of bird, we would have to change the code in the `fly` method. This is a violation of the Open/Closed Principle.
+
+<p align="center">
+    <img
+        src="https://miro.medium.com/max/1400/1*0MtFBmm6L2WVM04qCJOZPQ.png"
+        alt="Open/closed principle"
+        width="500"
+    />
+</p>
+
+**The Open/Closed Principle states that a class should be open for extension but closed for modification. This means that we should be able to add new functionality to the class without changing the existing code.** To add a new feature, we should ideally create a new class or method and have very little or no changes in the existing code.
+In doing so, we stop ourselves from modifying existing code and causing potential new bugs in an otherwise happy application. We should be able to add new functionality without touching the existing code for the class. This is because whenever we modify the existing code, we are taking the risk of creating potential bugs. So we should avoid touching the tested and reliable (mostly) production code if possible.
+
+* A module will be said to be open if it is still available for extension. For example, it should be possible to add fields to the data structures it contains, or new elements to the set of functions it performs.
+* A module will be said to be closed if [it] is available for use by other modules. This assumes that the module has been given a well-defined, stable description (the interface in the sense of information hiding).
+
+### Fixing OCP violation in the `Bird` class
+
+Now that we have learnt about abstract classes and interfaces, let us fix the SRP and OCP violation in the `Bird` class. In order to fix the SRP violations, we would consider having a parent class `Bird` and child classes `Eagle`, `Penguin`, and `Parrot`. Since, different birds have the same attributes and behaviours, we would want to use classes. An instance of the `Bird` class does not make sense, hence we would use an abstract class. We can't use an interface since we would want to have instance variables. We would also want to have a fixed contract for the subclasses to implement the common functionalities. Hence, we would use an abstract class.
+Now, our `Bird` class would look like this.
+
+```mermaid
+classDiagram
+    Bird <|-- Eagle
+    Bird <|-- Penguin
+    Bird <|-- Parrot
+    class Bird{
+        +weight: int
+        +colour: string
+        +type: string
+        +size: string
+        +beakType: string
+        +fly()
+    }
+    class Eagle{
+        +fly()
+    }
+    class Penguin{
+        +fly()
+    }
+    class Parrot{
+        +fly()
+    }
+```
 
 ## Liskov Substitution Principle
 
@@ -224,84 +285,7 @@ Along with the `fly()` method, we also have the `makeSound()` method in the `Fly
 Larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them. If a class exposes so many members that those members can be broken down into groups that serve different clients that don’t use members from the other groups, you should think about exposing those member groups as separate interfaces.
 
 Precise application design and correct abstraction is the key behind the Interface Segregation Principle. Though it'll take more time and effort in the design phase of an application and might increase the code complexity, in the end, we get a flexible code.
-
-## Dependency Inversion Principle
-The principle of dependency inversion refers to the decoupling of software modules. This way, instead of high-level modules depending on low-level modules, both will depend on abstractions. If the OCP states the goal of OO architecture, the DIP states the primary mechanism for achieving that goal.
-
-The general idea of this principle is as simple as it is important: High-level modules, which provide complex logic, should be easily reusable and unaffected by changes in low-level modules, which provide utility features. To achieve that, you need to introduce an abstraction that decouples the high-level and low-level modules from each other. Dependency inversion principle consists of two parts:
-* High-level modules should not depend on low-level modules. Both should depend on abstractions.
-* Abstractions should not depend on details. Details should depend on abstractions.
-
-![Dependency Inversion Principle](https://www.globalnerdy.com/wordpress/wp-content/uploads/2009/07/dependency_inversion_principle_thumb.jpg)
-
-Our bird class looks pretty neat now. We have separated the behaviour into different lean interfaces which are implemented by the classes that need them. When we add new sub-classes we identify an issue. For birds that have the same behaviour, we have to implement the same behaviour multiple times. 
-
-```java
-public class Eagle implements Flyable {
-    @Override
-    public void fly() {
-        System.out.println("Eagle is gliding");
-    }
-}
-
-public class Sparrow implements Flyable {
-    @Override
-    public void fly() {
-        System.out.println("Sparrow is gliding");
-    }
-}
-```
-
-The above can be solved by adding a default method to the `Flyable` interface. This way, we can avoid code duplication.
-But which method should be the default implementation? What if in future we add more birds that have the same behaviour? We will have to change the default implementation or either duplicate the code. 
-
-Instead of default implementations, let us abstract the common behaviours to a separate helper classes. We will create a `GlidingBehaviour` class and a `FlappingBehaviour` class. The `Eagle` and `Sparrow` classes will implement the `Flyable` interface and use the `GlidingBehaviour` class. The `Parrot` class will implement the `Flyable` interface and use the `FlappingBehaviour` class.
-
-```java
-public class Eagle implements Flyable {
-    private GlidingBehaviour glidingBehaviour;
-
-    public Eagle() {
-        this.glidingBehaviour = new GlidingBehaviour();
-    }
-
-    @Override
-    public void fly() {
-        glidingBehaviour.fly();
-    }
-}
-```
-
-Now we have a problem. The `Eagle` class is tightly coupled to the `GlidingBehaviour` class. If we want to change the behaviour of the `Eagle` class, we will have to open the Eagle class to change the behaviour. This is a violation of the dependency inversion principle. We should not depend on concrete classes. We should depend on abstractions.
-
-Naturally, we rely on interfaces as the abstraction. We create a new interface `FlyingBehaviour` and implement it in the `GlidingBehaviour` and `FlappingBehaviour` classes. The `Eagle` class will now depend on the `FlyingBehaviour` interface.
-
-
-```java
-    interface FlyingBehaviour{
-        void fly()
-    }
-    class GlidingBehaviour implements FlyingBehaviour{
-        @Override
-        public void fly() {
-            System.out.println("Eagle is gliding");
-        }
-    }
-    ...
-
-    class Eagle implements Flyable {
-        private FlyingBehaviour flyingBehaviour;
-
-        public Eagle() {
-            this.flyingBehaviour = new GlidingBehaviour();
-        }
-
-        @Override
-        public void fly() {
-            flyingBehaviour.fly();
-        }
-    }
-```
+---
 
 ## Reading list
 * [LSP](http://web.archive.org/web/20151128004108/http://www.objectmentor.com/resources/articles/lsp.pdf)
