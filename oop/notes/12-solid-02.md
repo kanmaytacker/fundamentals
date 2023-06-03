@@ -1,4 +1,18 @@
 # SOLID principles - Liskov, Interface Segregation, and Dependency Inversion
+- [SOLID principles - Liskov, Interface Segregation, and Dependency Inversion](#solid-principles---liskov-interface-segregation-and-dependency-inversion)
+  - [Key Terms](#key-terms)
+    - [Liskov Substitution Principle](#liskov-substitution-principle)
+    - [Interface Segregation Principle](#interface-segregation-principle)
+    - [Dependency Inversion Principle](#dependency-inversion-principle)
+  - [Open/closed principle](#openclosed-principle)
+    - [Fixing OCP violation in the `Bird` class](#fixing-ocp-violation-in-the-bird-class)
+  - [Liskov Substitution Principle](#liskov-substitution-principle-1)
+    - [Creating new abstract classes](#creating-new-abstract-classes)
+    - [Creating new interfaces](#creating-new-interfaces)
+    - [Summary](#summary)
+  - [Interface Segregation Principle](#interface-segregation-principle-1)
+  - [Precise application design and correct abstraction is the key behind the Interface Segregation Principle. Though it'll take more time and effort in the design phase of an application and might increase the code complexity, in the end, we get a flexible code.](#precise-application-design-and-correct-abstraction-is-the-key-behind-the-interface-segregation-principle-though-itll-take-more-time-and-effort-in-the-design-phase-of-an-application-and-might-increase-the-code-complexity-in-the-end-we-get-a-flexible-code)
+  - [Reading list](#reading-list)
 
 ## Key Terms
 ### Liskov Substitution Principle
