@@ -1,7 +1,6 @@
-package com.scaler.mergesort;
+package com.scaler.mergesort.solution;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -18,13 +17,25 @@ public class Sorter implements Callable<List<Integer>> {
     @Override
     public List<Integer> call() throws Exception {
 
-        // Base case
+        // Base case - If size of array 1 is return
+        if (values.size() <= 1) {
+            return values;
+        }
 
         // Split the array
+        int mid = values.size() / 2;
+
+        List<Integer> leftArray = values.subList(0, mid);
+        List<Integer> rightArray = values.subList(mid, values.size());
+
+        Sorter leftSorter = new Sorter(leftArray, executorService);
+        Sorter rightSorter = new Sorter(rightArray, executorService);
+
+        Future<List<Integer>> sortedLeft = executorService.submit(leftSorter);
+        Future<List<Integer>> sortedRight = executorService.submit(rightSorter);
 
         // Merge the array
-        // return merge(sortedLeft, sortedRight);
-        return Collections.emptyList();
+        return merge(sortedLeft, sortedRight);
     }
 
     private List<Integer> merge(Future<List<Integer>> sortedLeftFuture, Future<List<Integer>> sortedRightFuture)
@@ -66,3 +77,17 @@ public class Sorter implements Callable<List<Integer>> {
 
 }
 
+// Parallel - multiple tasks at same time instant
+// 7:11 - Task 1
+// 7:11 - Task 2
+
+// Person 1 Done
+// Person 2 IN PROCESS
+// Person 3 NOT started
+
+// Concurrency - Two tasks at different stages of execution
+// Person 1 - Intro 10% IN PROCESS
+// Person 2 - intro 10% IN PROCESS
+// Person 3 - intro 10% IN PROCESS
+
+// Person 1 - Query
