@@ -2,26 +2,18 @@ package com.scaler.quicksort;
 
 import lombok.AllArgsConstructor;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 @AllArgsConstructor
-public class QuickSorter implements Runnable {
+public class QuickSorter implements Callable<Integer[]> {
 
-    private int[] values;
+    private Integer[] values;
     private ExecutorService es;
     private int start;
     private int end;
 
-    @Override
-    public void run() {
-        if(start < end) {
-            int p = partition(values, start, end);
-            es.execute(new QuickSorter(values, es, start, p - 1));
-            es.execute(new QuickSorter(values, es, p + 1, end));
-        }
-    }
-
-    private int partition (int a[], int start, int end)
+    private int partition (Integer[] a, int start, int end)
     {
         int pivot = a[end]; // pivot element
         int i = (start - 1);
@@ -44,5 +36,13 @@ public class QuickSorter implements Runnable {
     }
 
 
-
+    @Override
+    public Integer[] call() throws Exception {
+        if(start < end) {
+            int p = partition(values, start, end);
+            es.submit(new QuickSorter(values, es, start, p - 1));
+            es.submit(new QuickSorter(values, es, p + 1, end));
+        }
+        return values;
+    }
 }
