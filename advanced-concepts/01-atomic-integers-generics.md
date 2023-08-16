@@ -1,133 +1,194 @@
-# Collections and Generics
-- [Collections and Generics](#collections-and-generics)
-  - [Java Collections Framework](#java-collections-framework)
-    - [Collection Interface](#collection-interface)
-    - [List Interface](#list-interface)
-    - [Set Interface](#set-interface)
-    - [Map Interface](#map-interface)
-    - [Comparators](#comparators)
+# Atomic Integers and Generics
+- [Atomic Integers and Generics](#atomic-integers-and-generics)
+  - [Atomic integers](#atomic-integers)
+    - [Motivation](#motivation)
+    - [Contention](#contention)
+    - [Usage](#usage)
+    - [Advantages of atomic integers](#advantages-of-atomic-integers)
+    - [Additional reading](#additional-reading)
   - [Generics](#generics)
     - [Generic methods](#generic-methods)
     - [Generic classes](#generic-classes)
     - [Bounded Type Parameters](#bounded-type-parameters)
     - [Wildcards](#wildcards)
-    - [Additional reading](#additional-reading)
+    - [Additional reading](#additional-reading-1)
       - [Type Erasure](#type-erasure)
       - [Advantages of Type Erasure](#advantages-of-type-erasure)
 
-## Java Collections Framework
+## Atomic integers
 
-The Java Collections Framework (JCF) is a set of classes and interfaces that implement commonly reusable collection data structures. The JCF is organized into interfaces and implementations of those interfaces. The interfaces define the functionality of the collection data structures, and the implementations provide concrete implementations of those interfaces.
+### Motivation
 
-The advantages of using the JCF are:
-* **Consistent API** - The API has a basic set of interfaces like Collection, Set, List, or Map, all the classes (ArrayList, LinkedList, Vector, etc) that implement these interfaces have some common set of methods.
-* **Reduces programming effort** - A programmer doesn’t have to worry about the design of the Collection but rather he can focus on its best use in his program. Therefore, the basic concept of Object-oriented programming (i.e.) abstraction has been successfully implemented.
-* **Increases program speed and quality** - Increases performance by providing high-performance implementations of useful data structures and algorithms because in this case, the programmer need not think of the best implementation of a specific data structure. He can simply use the best implementation to drastically boost the performance of his algorithm/program.
-
-![JCF](https://cdn.programiz.com/sites/tutorial2program/files/Java-Collections.png)
-
-### Collection Interface
-
-The Collection interface is the root interface of the Java Collections Framework. It is the foundation upon which the collection framework is built. It declares the core methods that all collections will have. The Collection interface is a part of the java.util package.
-
-The JDK does not provide any direct implementations of this interface: it provides implementations of more specific sub-interfaces like Set and List. This interface is typically used to pass collections around and manipulate them where maximum generality is desired.
-
-The Collection interface includes various methods that can be used to perform different operations on objects. These methods are available in all its subinterfaces.
-
-* `add()` - inserts the specified element to the collection
-* `size()` - returns the size of the collection
-* `remove()` - removes the specified element from the collection
-* `iterator()` - returns an iterator to access elements of the collection
-* `addAll()` - adds all the elements of a specified collection to the collection
-* `removeAll()` - removes all the elements of the specified collection from the collection
-* `clear()` - removes all the elements of the collection
-
-### List Interface
-
-The List interface extends the Collection interface. It is an ordered collection of objects in which duplicate values can be stored. Since List preserves the insertion order, it allows positional access and insertion of elements. List Interface is implemented by:
-* `ArrayList` - Resizable-array implementation of the List interface
-* `LinkedList` - Doubly-linked list implementation of the List and Deque interfaces
-* `Vector` - Synchronized resizable-array implementation of the List interface
-* `Stack` - Subclass of Vector that implements a standard last-in, first-out stack
-
-![List](https://cdn.programiz.com/sites/tutorial2program/files/Java-list-interface.png)
-
-### Set Interface
-
-The Set interface extends the Collection interface. It represents the unordered set of elements which doesn't allow us to store the duplicate items. We can store at most one null value in Set.
-
-![Set](https://cdn.programiz.com/sites/tutorial2program/files/java-set-implementation.png)
-
-Set is implemented by:
-* `HashSet` - It represents the unordered set of elements which doesn't allow us to store the duplicate items. It is the best approach for search operations.
-* `LinkedHashSet` - It represents the ordered set of elements which doesn't allow us to store the duplicate items. It is the child class of HashSet.
-* `TreeSet` - It contains unique elements only like HashSet. The TreeSet class implements NavigableSet interface that extends the SortedSet interface. It maintains ascending order.
-* `EnumSet` - It is the specialized Set implementation for use with enum types. It inherits AbstractSet class and implements the Set interface. 
-  
-### Map Interface
-
-The map is an object that stores the data in the form of key-value pairs. The Map interface is not a subtype of the Collection interface. Therefore it behaves a bit different from the rest of the collection types.
-
-![Map](https://cdn.programiz.com/sites/tutorial2program/files/java-map-subclasses.png)
-
-The Map interface is implemented by:
-* `HashMap` - It represents the implementation of the Map interface. It represents a mapping between a key and a value. It inherits AbstractMap class and implements Map interface.
-* `LinkedHashMap` - It represents the implementation of the Map interface and extends the HashMap class. Like HashMap, It also contains unique elements. It maintains the insertion order and permits null elements.
-* `TreeMap` - It represents the implementation of the Map interface that uses a tree for storage. Like HashMap, TreeMap also contains unique elements. However, the access and retrieval time of TreeMap is quite fast. The elements in TreeMap stored in the sorted and ascending order. It cannot contain the null key but can have multiple null values.
-* `ConcurrentHashMap` - It is a thread-safe class that represents the implementation of the Map interface. It is used to store the key-value pairs. It is introduced in Java 1.5. It does not allow null keys and null values.
-
-### Comparators
-In Java, a `Comparator` is an interface that defines a way to compare two objects for ordering. It is commonly used to provide custom sorting behavior for objects that do not have a natural ordering or when you want to sort objects based on criteria other than their natural order. The `Comparator` interface is part of the Java Collections Framework and is often used with sorting algorithms like `Collections.sort()` or `Arrays.sort()`.
-
-The `Comparator` interface has a single method:
+In concurrent programming, it is often necessary to update a shared variable. For example, a counter that is incremented by multiple threads. Remember the `Count` variable in the adder and subtractor problem.
 
 ```java
-int compare(T obj1, T obj2);
-```
+class Adder extends Runnable {
 
-Here, `obj1` and `obj2` are the objects to be compared. The `compare()` method returns a negative integer, zero, or a positive integer based on the comparison result. The meaning of the return value is as follows:
+    private Count count;
 
-- Negative Integer: `obj1` is less than `obj2`.
-- Zero: `obj1` is equal to `obj2`.
-- Positive Integer: `obj1` is greater than `obj2`.
-
-You can use the `Comparator` interface to define custom sorting logic for objects of a particular class. For example, suppose you have a `Person` class and you want to sort a list of `Person` objects based on their ages:
-
-```java
-import java.util.Comparator;
-
-class Person {
-    String name;
-    int age;
-
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-}
-
-class AgeComparator implements Comparator<Person> {
-    @Override
-    public int compare(Person person1, Person person2) {
-        return person1.age - person2.age;
+    public void run() {
+        int currentValue = count.getValue();
+        int nextValue = currentValue + index;
+        count.setValue(nextValue);
     }
 }
 ```
 
-With the `AgeComparator` class, you can sort a list of `Person` objects by age:
+The major source of the data inconsistency is our approach to update the shared variable. There are multiple steps involved in updating the shared variable. Each step is not atomic. That is, each step can be interrupted by other threads. For example, you read the current value of the counter, and before you update the counter, another thread updates the counter. Then, when you update the counter, you are using the old value of the counter. This is a data inconsistency.
+
+A solution to this problem is to make the update of the shared variable atomic. That is, the update of the shared variable is not interrupted by other threads. The synchronized keyword or the lock mechanism can be used to make the update of the shared variable atomic. However, the synchronized keyword and the lock mechanism increase the contention of the shared variable.
+
+### Contention
+Contention refers to a situation in concurrent programming where multiple threads compete for the same shared resource, such as a variable or a section of memory, that can only be accessed by one thread at a time. When threads contend for a resource, they may need to wait or be delayed, which can lead to performance degradation, increased latency, and reduced scalability.
+
+In the context of synchronization mechanisms like locks, high contention can occur when many threads attempt to acquire the same lock simultaneously. This can result in contention overhead, where threads spend significant time waiting for the lock to be released by other threads. Contention can be a major source of performance degradation in concurrent programs.
+
+### Usage
+
+Java provides a class called `AtomicInteger` to make the update of the shared variable atomic through different methods such as `getAndIncrement()`, `getAndDecrement()`, `getAndAdd()`, and `compareAndSet()`. The `AtomicInteger` class is located in the `java.util.concurrent.atomic` package.
+
+Let us rewrite the adder and subtractor problem using the `AtomicInteger` class.
+First update the `Count` class.
 
 ```java
-List<Person> people = new ArrayList<>();
-people.add(new Person("Alice", 30));
-people.add(new Person("Bob", 25));
-people.add(new Person("Charlie", 35));
+class Count {
 
-Collections.sort(people, new AgeComparator());
+    private AtomicInteger value;
+
+    public AtomicInteger getValue() {
+        return value;
+    }
+}
 ```
 
-Java provides additional utility methods for working with comparators, such as `Comparator.comparing()` and `Comparator.reverseOrder()`, to simplify the creation of comparators for common scenarios. Comparators are a powerful tool for customizing sorting behavior and are widely used in Java applications that involve sorting collections of objects.
+Then update the `Adder` class.
 
----
+```java
+class Adder extends Runnable {
+
+    private Count count;
+
+    public void run() {
+        count.getValue().getAndAdd(index);
+    }
+}
+```
+
+Here the `getAndAdd()` method is used to increment the counter by the value of `index`. The `getAndAdd()` method returns the old value of the counter.
+
+The `getAndAdd()` method is atomic. That is, the update of the counter is not interrupted by other threads. The `getAndAdd()` method is more efficient than the `synchronized` keyword and the lock mechanism. That is, the `getAndAdd()` method has less contention than the `synchronized` keyword and the lock mechanism.
+
+### Advantages of atomic integers
+
+Atomic integers are often considered better than using the `synchronized` keyword or locks in certain scenarios due to their performance, simplicity, and reduced contention. Here are some reasons why atomic integers can be preferred:
+
+1. **Reduced Contention:** Atomic integers provide a fine-grained approach to synchronization, which reduces contention compared to using locks. Contention occurs when multiple threads compete for access to a shared resource. With atomic operations, the contention is minimized because threads can update the value without blocking each other.
+
+2. **Performance:** Atomic operations are implemented using low-level hardware instructions or native methods, making them more efficient than using locks, which involve context switching and potentially higher overhead.
+
+3. **Non-Blocking:** Atomic operations are typically implemented using non-blocking algorithms, which means that threads do not block or wait for locks. Instead, they keep trying to perform the operation until successful, minimizing thread idling and resource waste.
+
+4. **Simplicity:** Using atomic integers is often simpler and less error-prone than managing locks manually. It reduces the risk of deadlocks, race conditions, and other synchronization-related issues.
+
+5. **Scalability:** Atomic operations can often lead to better scalability, especially in highly concurrent systems, because they reduce contention and allow more parallelism among threads.
+
+6. **Read-Modify-Write Operations:** Atomic integers are particularly useful for scenarios involving read-modify-write operations (e.g., incrementing a counter), where maintaining consistency is important without the need for a full lock.
+
+However, it's important to note that atomic operations have their limitations:
+
+- Atomic integers are suitable for simple operations like incrementing and comparing. For more complex scenarios, locks or other synchronization mechanisms might be more appropriate.
+- Atomic operations work well for a single variable, but they don't provide the same level of control over multiple variables and complex interactions that locks can offer.
+- Using atomic operations doesn't replace the need for synchronization entirely. They are a tool to be used in specific situations where they provide clear benefits.
+
+Ultimately, the choice between using atomic integers, locks, or other synchronization mechanisms depends on the specific requirements and characteristics of the concurrent problem you are trying to solve. It's important to carefully consider the trade-offs and performance characteristics of each approach in your particular context.
+
+### Additional reading
+
+Atomic data structures use a lock-free approach to provide synchronization in concurrent programming without relying on traditional locks. Instead of using locks to protect shared resources, atomic data structures employ atomic operations, such as Compare-And-Swap (CAS), to ensure safe and concurrent access.
+
+Lock-free programming and CAS (Compare-And-Swap) are advanced concepts in concurrent programming that aim to provide efficient synchronization mechanisms without the need for traditional locks or explicit synchronization. These concepts are crucial for building highly performant and scalable multi-threaded applications.
+
+**Lock-Free Programming:**
+Lock-free programming is an approach in concurrent programming where threads work independently and make progress without waiting for other threads to release locks. In a lock-free scenario, at least one thread is guaranteed to make progress within a finite number of steps, even in the presence of contention.
+
+Key characteristics of lock-free programming:
+
+1. **Progress Guarantee:** In a lock-free algorithm, at least one thread will eventually complete its operation without being blocked by others. This ensures that the system as a whole continues to make progress.
+
+2. **No Deadlocks:** Lock-free algorithms eliminate the risk of deadlocks, a common issue in traditional lock-based synchronization where threads can get stuck waiting for locks held by other threads.
+
+3. **Reduced Contention:** Lock-free algorithms aim to minimize contention for shared resources by allowing threads to perform independent operations without blocking each other.
+
+4. **Higher Scalability:** Lock-free programming can lead to better scalability in multi-core systems, as it enables more efficient utilization of available processing resources.
+
+**Compare-And-Swap (CAS):**
+CAS is a fundamental atomic operation used in lock-free programming. It is a hardware-supported mechanism that allows a thread to update a value in memory if it matches an expected value. CAS consists of three main steps: compare the current value with the expected value, swap the new value if the comparison succeeds, and return the outcome of the operation.
+
+CAS operation:
+```
+CAS(address, expectedValue, newValue)
+```
+
+CAS ensures that the value is updated atomically only if the expected value matches the current value. If the values don't match, the operation fails, indicating that another thread has modified the value in the meantime. This allows for safe and lock-free updates of shared data.
+
+CAS is a building block for many lock-free algorithms and data structures. It is used to implement atomic operations on variables, such as incrementing a counter, updating a reference, or performing other complex operations.
+
+Benefits of CAS:
+
+1. **Efficiency:** CAS is often more efficient than traditional locks, as it avoids the overhead of acquiring and releasing locks.
+
+2. **Aiding Lock-Free Programming:** CAS enables the implementation of lock-free algorithms by allowing threads to compete for shared resources without causing conflicts or contention.
+
+3. **Preventing Race Conditions:** CAS ensures that updates to shared data are performed atomically, preventing race conditions and maintaining data consistency.
+
+Find below a pseudo-code for the `AtomicInteger` class.
+```java
+class AtomicInteger {
+    private volatile int value;
+
+    public AtomicInteger(int initialValue) {
+        value = initialValue;
+    }
+
+    public int get() {
+        return value;
+    }
+
+    public void set(int newValue) {
+        value = newValue;
+    }
+
+    public int incrementAndGet() {
+        // Pseudo-code for hardware-supported atomic increment
+        atomically {
+            value += 1;
+            return value;
+        }
+    }
+
+    public boolean compareAndSet(int expectedValue, int newValue) {
+        // Pseudo-code for hardware-supported compare-and-swap
+        atomically {
+            if (value == expectedValue) {
+                value = newValue;
+                return true;
+            }
+            return false;
+        }
+    }
+    
+    // Other methods for atomic operations like addAndGet, getAndSet, etc.
+}
+
+```
+
+In this pseudo-code example:
+
+* The AtomicInteger class maintains a volatile value to store the integer value.
+* The incrementAndGet method demonstrates how a hardware-supported atomic increment operation might work, ensuring that the value is incremented atomically without the need for explicit locking.
+* The compareAndSet method illustrates how a hardware-supported compare-and-swap operation might be used to update the value atomically based on a condition.
+* The methods get and set simply read and write the value, respectively.
+
 ## Generics
 
 Generics were added to Java to provide compile-time type checking and removing the risk of ClassCastException that was common while working with collection classes. Before generics, we can store any type of objects in the collection, i.e., non-generic. Now generics force the java programmer to store a specific type of objects.
