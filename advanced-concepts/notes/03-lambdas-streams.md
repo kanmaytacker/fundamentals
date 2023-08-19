@@ -1,4 +1,27 @@
 # Lambdas and Streams
+- [Lambdas and Streams](#lambdas-and-streams)
+  - [Key Terms](#key-terms)
+    - [Lambdas](#lambdas)
+    - [Streams](#streams)
+    - [Functional Interfaces](#functional-interfaces)
+  - [Lambdas](#lambdas-1)
+    - [Motivation](#motivation)
+    - [Runnables with Lambdas](#runnables-with-lambdas)
+    - [Functional Interfaces](#functional-interfaces-1)
+    - [Passing Lambdas as Arguments](#passing-lambdas-as-arguments)
+  - [Streams](#streams-1)
+    - [Motivation](#motivation-1)
+    - [Creating Streams](#creating-streams)
+    - [Processing Streams](#processing-streams)
+    - [Intermediate Operations](#intermediate-operations)
+      - [Filtering](#filtering)
+      - [Mapping](#mapping)
+      - [Sorting](#sorting)
+    - [Terminal Operations](#terminal-operations)
+      - [Iterating](#iterating)
+      - [Reducing](#reducing)
+      - [Collecting](#collecting)
+      - [Finding the first element](#finding-the-first-element)
 
 ## Key Terms
 
