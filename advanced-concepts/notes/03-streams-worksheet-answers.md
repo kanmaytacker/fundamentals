@@ -126,10 +126,10 @@ List<Integer> distinctNumbers = numbers.stream()
 
 13.  Given a list of numbers, find the average of all the numbers.
 ```java
-List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List<Double> numbers = List.of(1.0, 2.0, 3.0, 4.0, 5.0);
 // Enter your code here
 Double average = numbers.stream()
-    .reduce(0.0, (currentAverage, number) -> (currentAverage + number) / 2.0);
+    .reduce(0.0, (currentValue, currentElement) -> currentElement + currentValue) / numbers.size();;
 ```
 
 14. Give a list of strings, find the average length of all the strings.
