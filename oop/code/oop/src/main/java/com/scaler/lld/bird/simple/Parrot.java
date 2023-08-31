@@ -1,8 +1,8 @@
-package com.scaler.lld.bird;
+package com.scaler.lld.bird.simple;
 
 public class Parrot extends Bird {
 
-    public Parrot(Integer weight, String colour, String size, String beakType, BirdType type) {
+    public Parrot(Double weight, String colour, String size, String beakType, BirdType type) {
         super(weight, colour, size, beakType, type);
     }
 
