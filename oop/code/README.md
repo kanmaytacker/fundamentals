@@ -2,8 +2,10 @@
 
 ## Bank transfers in procedural and object-oriented programming
 * [Procedural programming](../code/procedural_transfer.py)
-* [Object-oriented programming](oop/src/main/java/com/scaler/lld/basics/OopBankAccount.java)
-* [Unit test](oop/src/test/java/com/scaler/lld/basics/OopBankAccountTest.java)
+* [Object-oriented programming](java/src/main/java/com/scaler/lld/basics/OopBankAccount.java)
+* [Unit test](java/src/test/java/com/scaler/lld/basics/OopBankAccountTest.java)
+* [Python OOP Code](python/main.py)
+* [Golang Code](go/basic/main.go)
 
 ## Object-oriented programming
 ### Encapsulation
