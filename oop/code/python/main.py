@@ -15,7 +15,7 @@ def main():
 
 	#oop - inheritance
 
-	sam = Student("sam", "abhi@a.cm", 25, "khulri", "Oct", 90, StudentStatus.ACTIVE)
+	sam = Student("sam", "abhi@a.cm", "batch1", 90)
 	sam.print_details()
 
 	# oop - inheritance and polymorphism
