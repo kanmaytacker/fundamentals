@@ -1,21 +1,21 @@
 package main
 
 import (
-	"basic/bank"
-	"fmt"
+	"basic/bird"
 )
 
 func main() {
-	acc1 := bank.NewBankAccount(1, "abhi", 10000.00)
-	acc2 := bank.NewBankAccount(2, "ankit", 0.00)
+	bird1 := bird.NewBird(6.5, 2.1, "brown")
+	eagle := &bird.Eagle{Bird: bird1}
 
-	fmt.Println("Before Balance")
-	acc1.PrintBalance()
-	acc2.PrintBalance()
+	bird2 := bird.NewBird(15.0, 1.2, "black and white")
+	penguin := &bird.Penguin{Bird: bird2}
 
-	acc1.Transfer(acc2, 5000.00)
+	bird3 := bird.NewBird(2.5, 0.8, "white")
+	duck := &bird.Duck{Bird: bird3}
 
-	fmt.Println("After Balance")
-	acc1.PrintBalance()
-	acc2.PrintBalance()
+	eagle.Fly()
+	penguin.Swim()
+	duck.Fly()
+	duck.Swim()
 }
