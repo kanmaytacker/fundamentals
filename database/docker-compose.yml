@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: jedi_academy
+    volumes:
+      - ./code/create_database.sql:/docker-entrypoint-initdb.d/create_database.sql
+    ports:
+      - "3306:3306"
