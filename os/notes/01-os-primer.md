@@ -21,7 +21,7 @@
 ## What is an Operating System?
 
 For users, an operating system allows them to interact with the hardware of a computer. However, for developers an operating system is:
-* `Low-level APIs` - Developers can the low-level APIs to interact with the various components of a computer. For instance, a developer can use the `read` and `write` system calls to read and write to a file. You can use the `os` module in Python to interact with the operating system.
+* `Low-level APIs` - Developers can use the low-level APIs to interact with the various components of a computer. For instance, a developer can use the `read` and `write` system calls to read and write to a file. You can use the `os` module in Python to interact with the operating system.
 * `Resource Management` - An operating system manages the resources of a computer. For instance, it manages the memory of a computer. Multiple processes can run on a computer at the same time. However, each process has its own memory space. The operating system manages the memory of a computer and allocates memory to each process. It also manages the CPU of a computer. It schedules the processes to run on the CPU.
 
 ## Uniprogramming vs Multiprogramming
