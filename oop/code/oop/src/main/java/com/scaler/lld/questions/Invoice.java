@@ -4,6 +4,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @AllArgsConstructor
 public class Invoice {
@@ -20,15 +23,27 @@ public class Invoice {
         return price * (1 + taxRate);
     }
 
-    public void printInvoice() {
-        System.out.println(quantity + "x " + book.getName() + " " + book.getPrice() + "$");
-        System.out.println("Discount Rate: " + discountRate);
-        System.out.println("Tax Rate: " + taxRate);
-        System.out.println("Total: " + total);
+    public void printInvoice()
+    {
+        Printer<List<String>> invoicePrinter = new Printer<>(getInvoiceDetails());
+        invoicePrinter.Print();
     }
 
-    public void saveToFile(String filename) {
-        // Creates a file with given name and writes the invoice
+    public List<String> getInvoiceDetails()
+    {
+        List<String> invoiceDetails = new ArrayList<>();
+        invoiceDetails.add(quantity + "x " + book.getName() + " " + book.getPrice() + "$");
+        invoiceDetails.add("Discount Rate: " + discountRate);
+        invoiceDetails.add("Tax Rate: " + taxRate);
+        invoiceDetails.add("Total: " + total);
+
+        return invoiceDetails;
+    }
+
+    public void saveToFile()
+    {
+        FileHandler handler = new FileHandler();
+        handler.CreateFile(getInvoiceDetails());
     }
 
 }
