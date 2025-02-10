@@ -11,6 +11,3 @@ class User:
 
 	def print_details(self) -> None:
 		print("Print with no args")
-
-	def print_details(self, title: str) -> None:
-		print("\n In User:", title, self.get_name())
