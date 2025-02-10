@@ -146,7 +146,7 @@ def transfer(source: int, destination: int, amount: int) -> None:
 def get_account(number: int) -> dict:
     return list(filter(lambda account: account['number'] == number, accounts))[0]
 
-def update_account(account: int, delta: int) -> None:
+def update_account(account: dict, delta: int) -> None:
     account['balance'] += delta
 ```
 
